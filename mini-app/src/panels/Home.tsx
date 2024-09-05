@@ -42,7 +42,7 @@ export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
           
           
         </Flex>
-        <Button onClick={() => routeNavigator.push('/onboarding')}  className={styles.startBtn}>Начать</Button  >
+        <Button onClick={() => routeNavigator.push('/gameScreen')}  className={styles.startBtn}>Начать</Button  >
         <Button className={styles.leaderListBtn}>Топ искателей</Button>
       {/* <Group header={<Header mode="secondary">Navigation Example</Header>}>
         <Div>

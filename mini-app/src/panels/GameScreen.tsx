@@ -27,7 +27,7 @@ export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
 
-export const Onboarding: FC<OnboardingProps> = ({ id, fetchedUser }) => {
+export const GameScreen: FC<OnboardingProps> = ({ id, fetchedUser }) => {
 const routeNavigator = useRouteNavigator();
 const [countHints, setCountHints] = useState(3);
 const [isHindBtnDisabled, setIsHindBtnDisabled]= useState(false);
