@@ -61,13 +61,8 @@ const [secondsRemaining, setSecondsRemaining] = useState(30);
 
 
   useEffect(() => {
-
-
-
     let intervalId: number | undefined
-  
     const startTimer = () => {
-
       intervalId = setInterval(() => {
         if (isPause || secondsRemaining <= 0) {
           clearInterval(intervalId);
@@ -99,7 +94,6 @@ const handleClosePauseModel = () => {
 }
 
 const handleEndTimer = () => {}
-
 const hintCircleCSS = {
   transform: `translate(${posHintCircleX}px, ${posHintCircleY}px)`, 
   width: radiusHintCircle + 'px', 
@@ -107,11 +101,10 @@ const hintCircleCSS = {
   display: isDisplayHint ? 'block': 'none'
 }
 
-
   const modalPauseElement = (
     <ModalRoot activeModal= 'pause'  >
       
-      <ModalPage  style={{minHeight: '200px'}}   id="pause" dynamicContentHeight>
+      <ModalPage  style={{minHeight: '200px'}}   id="pause" dynamicContentHeight hideCloseButton>
       <div className={styles.pauseWrapperModal}>
         <h3 className={styles.pauseTitleModal} >Пауза</h3>
         <Button onClick={handleClosePauseModel} className={styles.pauseBtnModal} >Продолжить</Button>
