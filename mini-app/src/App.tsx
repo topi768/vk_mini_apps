@@ -2,10 +2,12 @@ import { useState, useEffect, ReactNode } from 'react';
 import bridge, { UserInfo } from '@vkontakte/vk-bridge';
 import { View, SplitLayout, SplitCol, ScreenSpinner } from '@vkontakte/vkui';
 import { useActiveVkuiLocation } from '@vkontakte/vk-mini-apps-router';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
 
-import { Persik, Home } from './panels';
+import { Persik, Home, Onboarding } from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
+import "./App.css"
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
   const [fetchedUser, setUser] = useState<UserInfo | undefined>();
@@ -25,7 +27,8 @@ export const App = () => {
       <SplitCol>
         <View activePanel={activePanel}>
           <Home id="home" fetchedUser={fetchedUser} />
-          <Persik id="persik" />
+          <Onboarding id="onboarding" fetchedUser={fetchedUser} />
+
         </View>
       </SplitCol>
     </SplitLayout>
