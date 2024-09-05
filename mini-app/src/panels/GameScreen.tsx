@@ -22,6 +22,7 @@ import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20Sh
 import styles from './Game.module.css'
 import { TimerReverse } from '../components/TimerReverse';
 import { PrestartModal } from '../components/PrestartModal';
+import axios from 'axios';
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -59,7 +60,19 @@ const handleClickHint = () => {
 const [isPause, setIsPause]= useState(false);
 const [secondsRemaining, setSecondsRemaining] = useState(30);
 
+// const fetchCat = async () => {
+//   axios.get('https://showtime.app-dich.com/api/findcat/')
+//   .then(res => {
+//     console.log(res.data);
+    
+//   }).catch(err => {
+//     console.log(err);
+    
+//   })
 
+// };
+
+fetchCat()
   useEffect(() => {
     let intervalId: number | undefined
     const startTimer = () => {
@@ -100,6 +113,8 @@ const hintCircleCSS = {
   height: radiusHintCircle + 'px', 
   display: isDisplayHint ? 'block': 'none'
 }
+
+
 
   const modalPauseElement = (
     <ModalRoot activeModal= 'pause'  >
