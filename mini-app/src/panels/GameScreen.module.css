@@ -1,17 +1,12 @@
 .timer {
-   
-
 font-family: 'Inter';
 font-style: italic;
 font-weight: 800;
 font-size: 128px;
 line-height: 155px;
-/* identical to box height */
 text-align: center;
-
 color: #FFFFFF;
 
- 
 }
 .pauseBtn {
     max-width: 40px;
@@ -49,3 +44,4 @@ color: #FFFFFF;
     transform: translate(-50%, -50%);
     
 }
+

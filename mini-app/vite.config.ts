@@ -1,6 +1,8 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import legacy from '@vitejs/plugin-legacy';
+import tailwindcss from "tailwindcss";
+
 
 function handleModuleDirectivesPlugin() {
   return {
@@ -22,6 +24,11 @@ function handleModuleDirectivesPlugin() {
  * The details are here: https://dev.vk.com/mini-apps/development/on-demand-resources.
  */
 export default defineConfig({
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
   base: './',
 
   plugins: [

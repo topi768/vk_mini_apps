@@ -7,6 +7,8 @@ import { Home, GameScreen } from './panels';
 import { DEFAULT_VIEW_PANELS } from './routes';
 
 import "./App.css"
+// import "./index.css"
+
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } = useActiveVkuiLocation();
   const [fetchedUser, setUser] = useState<UserInfo | undefined>();
@@ -24,6 +26,7 @@ export const App = () => {
   return (
     <SplitLayout>
       <SplitCol>
+
         <View activePanel={activePanel}>
           <Home id="home"/>
           <GameScreen id="GameScreen" />

@@ -19,7 +19,8 @@ import {
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20ShareOutline, Icon20User, Icon24VoiceOutline } from '@vkontakte/icons';
-import styles from "../panels/Game.module.css"
+import styles from "../panels/GameScreen.module.css"
+import "../App.css"
 
 
 
@@ -71,9 +72,14 @@ const [secondsRemaining, setSecondsRemaining] = useState(startTime);
 
 
   return (
+    <>
+
     <p className={styles.timer} >
-{secondsRemaining}
+      {secondsRemaining}
+
     </p>
+    </>
+
     // 
   );
 };

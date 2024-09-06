@@ -19,11 +19,10 @@ import {
 import { UserInfo } from '@vkontakte/vk-bridge';
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
 import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20ShareOutline, Icon20User, Icon24VoiceOutline } from '@vkontakte/icons';
-import styles from './Game.module.css'
+import styles from './GameScreen.module.css'
 import { TimerReverse } from '../components/TimerReverse';
 import { PrestartModal } from '../components/PrestartModal';
 import axios from 'axios';
-
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
@@ -72,7 +71,7 @@ const [secondsRemaining, setSecondsRemaining] = useState(30);
 
 // };
 
-fetchCat()
+
   useEffect(() => {
     let intervalId: number | undefined
     const startTimer = () => {
@@ -147,7 +146,7 @@ const hintCircleCSS = {
         <Icon20Pause></Icon20Pause>
       </Button>  
       <div className={styles.hintCircle} style={hintCircleCSS}></div>
-      
+      <button className='m-10' >34534535</button>
       <PrestartModal onClosePrestartModal={onClosePrestartModal} isOpen={isOpenPrestartModal}  />
     </Panel>
   );
