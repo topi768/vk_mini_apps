@@ -22,13 +22,17 @@ import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20Sh
 import styles from './GameScreen.module.css'
 import { TimerReverse } from '../components/TimerReverse';
 import { PrestartModal } from '../components/PrestartModal';
-import axios from 'axios';
+// import { useFindCat } from '../hooks/useFindCat';
+
+// const { data, isLoading, error } = useFindCat();
+// console.log(data);
+
+
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
 
 export const GameScreen: FC<OnboardingProps> = ({ id, fetchedUser }) => {
-const routeNavigator = useRouteNavigator();
 const [countHints, setCountHints] = useState(3);
 const [isHindBtnDisabled, setIsHindBtnDisabled]= useState(false);
 
@@ -59,17 +63,8 @@ const handleClickHint = () => {
 const [isPause, setIsPause]= useState(false);
 const [secondsRemaining, setSecondsRemaining] = useState(30);
 
-// const fetchCat = async () => {
-//   axios.get('https://showtime.app-dich.com/api/findcat/')
-//   .then(res => {
-//     console.log(res.data);
-    
-//   }).catch(err => {
-//     console.log(err);
-    
-//   })
 
-// };
+
 
 
   useEffect(() => {
@@ -139,14 +134,12 @@ const hintCircleCSS = {
     <div style={{display: 'flex', justifyContent: "center", width: '100%', height: '100%'}} >
       <Button style={{maxWidth:' 200px'}} disabled={isHindBtnDisabled}  onClick={handleClickHint} >{countHints} Подсказки </Button>
     </div>
-      {/* <div className={styles.timer}> {secondsRemaining} </div> */}
       <TimerReverse isPause={isPause} startTime={30}  onEnd={handleEndTimer}  />
 
       <Button onClick={handleClickPause} className={styles.pauseBtn}>
         <Icon20Pause></Icon20Pause>
       </Button>  
       <div className={styles.hintCircle} style={hintCircleCSS}></div>
-      <button className='m-10' >34534535</button>
       <PrestartModal onClosePrestartModal={onClosePrestartModal} isOpen={isOpenPrestartModal}  />
     </Panel>
   );
