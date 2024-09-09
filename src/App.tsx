@@ -31,8 +31,8 @@ const queryClient = new QueryClient()
 
   return (
     <SplitLayout>
-           <QueryClientProvider client={queryClient}>
-     <Example />
+        <QueryClientProvider client={queryClient}>
+     {/* <Example /> */}
    </QueryClientProvider>
     <SplitCol>
 
