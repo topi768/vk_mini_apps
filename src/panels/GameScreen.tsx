@@ -23,14 +23,16 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [countHints, setCountHints] = useState(3)
   const [isHindBtnDisabled, setIsHindBtnDisabled] = useState(false)
 
+  const stepSizeCircle = useRef(80)
   const [posHintCircleX, setPosHintCircleX] = useState(120)
   const [posHintCircleY, setPosHintCircleY] = useState(130)
-  const [radiusHintCircle, setRadiusHintCircle] = useState(0)
-  const [isDisplayHint, setIsDisplayHint] = useState(false)
+  const [radiusHintCircle, setRadiusHintCircle] = useState(
+    (3 + 1) * stepSizeCircle.current,
+  )
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false)
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false)
 
-  const stepSizeCircle = useRef(80)
+  const hintCircleRef = useRef<HTMLDivElement>(null)
 
   const handleClickHint = () => {
     setCountHints(countHints - 1)
@@ -38,10 +40,16 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       setIsHindBtnDisabled(true)
     }
 
-    setIsDisplayHint(true)
     setRadiusHintCircle(countHints * stepSizeCircle.current)
     setPosHintCircleX(stepSizeCircle.current / 2 + posHintCircleX)
     setPosHintCircleY(stepSizeCircle.current / 2 + posHintCircleY)
+
+    if (hintCircleRef.current) {
+      hintCircleRef.current.style.display = 'block'
+      hintCircleRef.current.style.transform = `translate(${posHintCircleX}px, ${posHintCircleY}px)`
+      hintCircleRef.current.style.width = `${radiusHintCircle}px`
+      hintCircleRef.current.style.height = `${radiusHintCircle}px`
+    }
   }
 
   const [isPause, setIsPause] = useState(false)
@@ -80,12 +88,6 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   }
 
   const handleEndTimer = () => {}
-  const hintCircleCSS = {
-    transform: `translate(${posHintCircleX}px, ${posHintCircleY}px)`,
-    width: radiusHintCircle + 'px',
-    height: radiusHintCircle + 'px',
-    display: isDisplayHint ? 'block' : 'none',
-  }
 
   const modalPauseElement = (
     <ModalRoot activeModal="pause">
@@ -131,7 +133,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       <Button onClick={handleClickPause} className={styles.pauseBtn}>
         <Icon20Pause></Icon20Pause>
       </Button>
-      <Div className={styles.hintCircle} style={hintCircleCSS}></Div>
+      <div className={styles.hintCircle} ref={hintCircleRef}></div>
       <PrestartModal
         onClosePrestartModal={onClosePrestartModal}
         isOpen={isOpenPrestartModal}
