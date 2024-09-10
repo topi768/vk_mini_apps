@@ -112,21 +112,14 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsOpenPrestartModal(false)
   }
   return (
-    <Panel id={id} style={{ width: '100%', height: '100%' }}>
+    <Panel id={id} className="w-full h-full">
       <SplitLayout
         modal={!isOpenPausetModal || modalPauseElement}
-        style={{ width: '100%', height: '100%' }}
+        className="w-full h-full"
       ></SplitLayout>
-      <Div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          width: '100%',
-          height: '100%',
-        }}
-      >
+      <Div className="flex justify-center w-full h-full">
         <Button
-          style={{ maxWidth: ' 200px' }}
+          className="max-w-[200px]"
           disabled={isHindBtnDisabled}
           onClick={handleClickHint}
         >
