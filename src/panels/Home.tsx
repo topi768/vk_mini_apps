@@ -1,33 +1,17 @@
 import { FC } from 'react'
+import React from 'react'
 
-import {
-  Panel,
-  PanelHeader,
-  Header,
-  Button,
-  Group,
-  Cell,
-  Div,
-  Avatar,
-  NavIdProps,
-  Flex,
-} from '@vkontakte/vkui'
+import { Panel, Button, NavIdProps, Flex } from '@vkontakte/vkui'
 import { UserInfo } from '@vkontakte/vk-bridge'
 import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-import {
-  Icon20RefreshOutline,
-  Icon20ShareExternalAndroid,
-  Icon20ShareOutline,
-  Icon20User,
-  Icon24VoiceOutline,
-} from '@vkontakte/icons'
+import { Icon20ShareExternalAndroid, Icon20User } from '@vkontakte/icons'
 import styles from './Home.module.css'
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo
 }
 
-export const Home: FC<HomeProps> = ({ id, fetchedUser }) => {
+export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator()
 
   return (

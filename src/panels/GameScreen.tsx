@@ -13,6 +13,7 @@ import { Icon20Pause } from '@vkontakte/icons'
 import styles from './GameScreen.module.css'
 import { TimerReverse } from '../components/TimerReverse'
 import { PrestartModal } from '../components/PrestartModal'
+import React from 'react'
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo
