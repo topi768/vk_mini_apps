@@ -1,18 +1,18 @@
-import { FC } from 'react'
-import React from 'react'
+import { FC } from "react";
+import React from "react";
 
-import { Panel, Button, NavIdProps, Flex } from '@vkontakte/vkui'
-import { UserInfo } from '@vkontakte/vk-bridge'
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router'
-import { Icon20ShareExternalAndroid, Icon20User } from '@vkontakte/icons'
-import styles from './Home.module.css'
+import { Panel, Button, NavIdProps, Flex } from "@vkontakte/vkui";
+import { UserInfo } from "@vkontakte/vk-bridge";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { Icon20ShareExternalAndroid, Icon20User } from "@vkontakte/icons";
+import styles from "./Home.module.css";
 
 export interface HomeProps extends NavIdProps {
-  fetchedUser?: UserInfo
+  fetchedUser?: UserInfo;
 }
 
 export const Home: FC<HomeProps> = ({ id }) => {
-  const routeNavigator = useRouteNavigator()
+  const routeNavigator = useRouteNavigator();
 
   return (
     <>
@@ -21,7 +21,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
 
 
       </PanelHeader> */}
-        <Flex justify={'space-between'} className={styles.header}>
+        <Flex justify={"space-between"} className={styles.header}>
           <div className={styles.itemWrapper}>
             <Icon20User />
           </div>
@@ -31,7 +31,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
         </Flex>
         <div className="hiden">
           <Button
-            onClick={() => routeNavigator.push('/gameScreen')}
+            onClick={() => routeNavigator.push("/gameScreen")}
             className={styles.startBtn}
           >
             Начать
@@ -47,5 +47,5 @@ export const Home: FC<HomeProps> = ({ id }) => {
       </Group> */}
       </Panel>
     </>
-  )
-}
+  );
+};

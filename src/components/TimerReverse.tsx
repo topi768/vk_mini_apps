@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from 'react';
+import { FC, useState, useEffect, useRef } from "react";
 import {
   Panel,
   PanelHeader,
@@ -13,40 +13,32 @@ import {
   ModalRoot,
   ModalPage,
   ModalCard,
-  SplitLayout
+  SplitLayout,
+} from "@vkontakte/vkui";
+import { UserInfo } from "@vkontakte/vk-bridge";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import {
+  Icon20Pause,
+  Icon20RefreshOutline,
+  Icon20ShareExternalAndroid,
+  Icon20ShareOutline,
+  Icon20User,
+  Icon24VoiceOutline,
+} from "@vkontakte/icons";
+import styles from "../panels/GameScreen.module.css";
+import "../App.css";
 
-} from '@vkontakte/vkui';
-import { UserInfo } from '@vkontakte/vk-bridge';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20ShareOutline, Icon20User, Icon24VoiceOutline } from '@vkontakte/icons';
-import styles from "../panels/GameScreen.module.css"
-import "../App.css"
-
-
-
-export const TimerReverse = ({isPause, startTime, onEnd }) => {
-
-
-
-
-// const [isPause, setIsPause]= useState(false);
-const [secondsRemaining, setSecondsRemaining] = useState(startTime);
-
-
-
-
+export const TimerReverse = ({ isPause, startTime, onEnd }) => {
+  // const [isPause, setIsPause]= useState(false);
+  const [secondsRemaining, setSecondsRemaining] = useState(startTime);
 
   useEffect(() => {
+    let intervalId: number | undefined;
 
-
-
-    let intervalId: number | undefined
-  
     const startTimer = (isPause: boolean) => {
-
       intervalId = setInterval(() => {
         if (secondsRemaining <= 0 && !isPause) {
-          onEnd()
+          onEnd();
         }
         if (isPause || secondsRemaining <= 0) {
           clearInterval(intervalId);
@@ -55,31 +47,22 @@ const [secondsRemaining, setSecondsRemaining] = useState(startTime);
 
         setSecondsRemaining((prevSeconds: number) => prevSeconds - 1);
       }, 1000);
-      
     };
-  
-    if (!isPause ) {
+
+    if (!isPause) {
       startTimer();
     }
-  
+
     return () => {
       clearInterval(intervalId);
     };
   }, [isPause, secondsRemaining]);
-  
-
-  
-
 
   return (
     <>
-
-    <p className={styles.timer} >
-      {secondsRemaining}
-
-    </p>
+      <p className={styles.timer}>{secondsRemaining}</p>
     </>
 
-    // 
+    //
   );
 };

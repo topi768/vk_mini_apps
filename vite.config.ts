@@ -1,15 +1,14 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
-import legacy from '@vitejs/plugin-legacy';
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+import legacy from "@vitejs/plugin-legacy";
 import tailwindcss from "tailwindcss";
-
 
 function handleModuleDirectivesPlugin() {
   return {
-    name: 'handle-module-directives-plugin',
+    name: "handle-module-directives-plugin",
     transform(code, id) {
-      if (id.includes('@vkontakte/icons')) {
-        code = code.replace(/"use-client";?/g, '');
+      if (id.includes("@vkontakte/icons")) {
+        code = code.replace(/"use-client";?/g, "");
       }
       return { code };
     },
@@ -29,26 +28,26 @@ export default defineConfig({
       plugins: [tailwindcss()],
     },
   },
-  base: './',
+  base: "./",
 
   plugins: [
     react(),
     handleModuleDirectivesPlugin(),
     legacy({
-      targets: ['defaults', 'not IE 11'],
+      targets: ["defaults", "not IE 11"],
     }),
   ],
 
   server: {
     port: 5173,
-    host: 'localhost',
+    host: "localhost",
     hmr: {
-      protocol: 'ws',
-      host: 'localhost',
+      protocol: "ws",
+      host: "localhost",
     },
   },
 
   build: {
-    outDir: 'build',
+    outDir: "build",
   },
 });
