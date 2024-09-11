@@ -18,6 +18,9 @@ export const App = () => {
   );
 
   useEffect(() => {
+    if (activePanel == DEFAULT_VIEW_PANELS.HOME) {
+      console.log(activePanel);
+    }
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
       setUser(user);
