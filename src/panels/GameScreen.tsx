@@ -10,7 +10,6 @@ import {
 } from '@vkontakte/vkui'
 import { UserInfo } from '@vkontakte/vk-bridge'
 import { Icon20Pause } from '@vkontakte/icons'
-import styles from './GameScreen.module.css'
 import { TimerReverse } from '../components/TimerReverse'
 import { PrestartModal } from '../components/PrestartModal'
 import React from 'react'
@@ -97,11 +96,11 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         dynamicContentHeight
         hideCloseButton
       >
-        <Div className={styles.pauseWrapperModal}>
-          <h3 className={styles.pauseTitleModal}>Пауза</h3>
+        <Div className="p-[120px] relative">
+          <h3 className="absolute w-full top-5 left-0 text-center">Пауза</h3>
           <Button
             onClick={handleClosePauseModel}
-            className={styles.pauseBtnModal}
+            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-5 "
           >
             Продолжить
           </Button>
@@ -130,10 +129,16 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       </Div>
       <TimerReverse isPause={isPause} startTime={30} onEnd={handleEndTimer} />
 
-      <Button onClick={handleClickPause} className={styles.pauseBtn}>
+      <Button
+        onClick={handleClickPause}
+        className="max-w-[40px] absolute bottom-5 left-1/2 -translate-x-1/2 -translate-y-5"
+      >
         <Icon20Pause></Icon20Pause>
       </Button>
-      <div className={styles.hintCircle} ref={hintCircleRef}></div>
+      <div
+        className="absolute rounded-full border border-red-500"
+        ref={hintCircleRef}
+      ></div>
       <PrestartModal
         onClosePrestartModal={onClosePrestartModal}
         isOpen={isOpenPrestartModal}

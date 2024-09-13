@@ -1,61 +1,51 @@
 .itemWrapper {
-    padding: 10px;
-    /* Group 1 */
+  padding: 10px;
 
-    /* Rectangle 1 */
+  color: black;
 
-
-    color: black;
-
-    background: #D9D9D9;
-    cursor: pointer;
-
-
+  background: #d9d9d9;
+  cursor: pointer;
 }
 
 .header {
-    margin: 20px 40px;
-
+  margin: 20px 40px;
 }
 
 .startBtn {
-    padding: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Начать */
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Начать */
 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
 
+  color: #000000;
 
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 58px;
-    /* identical to box height */
-
-    color: #000000;
-
-
-    /* Inside auto layout */
-    flex: none;
-    order: 0;
-    flex-grow: 0;
+  /* Inside auto layout */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
 }
 
 .leaderListBtn {
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 48px;
-    line-height: 58px;
-    /* identical to box height */
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
 
-    color: #000000;
-    padding: 10px;
-    position: absolute;
-    bottom: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%);
+  color: #000000;
+  padding: 10px;
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
 }

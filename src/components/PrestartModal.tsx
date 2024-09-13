@@ -1,58 +1,38 @@
-import { FC, useState, useEffect, useRef } from 'react';
-import {
-  Panel,
-  PanelHeader,
-  Header,
-  Button,
-  Group,
-  Cell,
-  Div,
-  Avatar,
-  NavIdProps,
-  Flex,
-  ModalRoot,
-  ModalPage,
-  ModalCard,
-  SplitLayout
+import React from 'react'
 
-} from '@vkontakte/vkui';
-import { UserInfo } from '@vkontakte/vk-bridge';
-import { useRouteNavigator } from '@vkontakte/vk-mini-apps-router';
-import { Icon20Pause, Icon20RefreshOutline, Icon20ShareExternalAndroid, Icon20ShareOutline, Icon20User, Icon24VoiceOutline } from '@vkontakte/icons';
-import { TimerReverse } from './TimerReverse';
-import {createPortal}  from 'react-dom';
-const portal = document.getElementById('portal')
-import styles from "./PrestartModal.module.css"
+import { Div } from '@vkontakte/vkui'
 
-export const PrestartModal = ({isOpen, onClosePrestartModal}) => {
+import {} from '@vkontakte/icons'
+import { TimerReverse } from './TimerReverse'
+import { createPortal } from 'react-dom'
+const portal = document.getElementById('portal')!
 
-  
+export const PrestartModal = ({
+  isOpen,
+  onClosePrestartModal,
+}: {
+  isOpen: boolean
+  onClosePrestartModal: () => void
+}) => {
   const handleEndTimer = () => {
     onClosePrestartModal()
-  };
-  
-if ( isOpen ) {
-  return createPortal(
-    (
-      <div className={styles.overlay} >
-        <div className={styles.prestartModal}>
-            <p>СТАРТ ЧЕРЕЗ</p>
-            <TimerReverse isPause={false} startTime={3} onEnd={handleEndTimer} />
-        </div> 
-      </div>
- 
-    ),
-      portal
+  }
+
+  if (isOpen) {
+    return createPortal(
+      <Div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+        <Div className="font-inter italic font-bold text-6xl leading-11 text-center text-white">
+          <p>СТАРТ ЧЕРЕЗ</p>
+          <TimerReverse isPause={false} startTime={3} onEnd={handleEndTimer} />
+        </Div>
+      </Div>,
+
+      portal,
     )
-}
-
-
-
-
+  }
 
   // return (
 
-
-  //   // 
+  //   //
   // );
-};
+}

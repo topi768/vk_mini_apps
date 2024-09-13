@@ -8,7 +8,6 @@ import { DEFAULT_VIEW_PANELS } from './routes'
 
 import './App.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { useGetHealth } from './hooks/useGetHealth'
 
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } =
@@ -31,9 +30,7 @@ export const App = () => {
 
   return (
     <SplitLayout>
-      <QueryClientProvider client={queryClient}>
-        {/* <Example /> */}
-      </QueryClientProvider>
+      <QueryClientProvider client={queryClient}></QueryClientProvider>
       <SplitCol>
         <View activePanel={activePanel}>
           <Home id="home" />
@@ -41,20 +38,5 @@ export const App = () => {
         </View>
       </SplitCol>
     </SplitLayout>
-  )
-}
-
-function Example() {
-  const { isPending, error, data } = useGetHealth()
-
-  if (isPending) return 'Loading...'
-
-  if (error) return 'An error has occurred: ' + error.message
-  console.log(data)
-
-  return (
-    <div>
-      <h1>{data}</h1>
-    </div>
   )
 }
