@@ -34,6 +34,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
 
   const handleClickHint = () => {
     setCountHints(countHints - 1);
+
     if (countHints - 1 <= 0) {
       setIsHindBtnDisabled(true);
     }
@@ -55,10 +56,12 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
 
   useEffect(() => {
     let intervalId: number | undefined;
+
     const startTimer = () => {
       intervalId = setInterval(() => {
         if (isPause || secondsRemaining <= 0) {
           clearInterval(intervalId);
+
           return;
         }
 
@@ -107,10 +110,12 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       </ModalPage>
     </ModalRoot>
   );
+
   const onClosePrestartModal = () => {
     setIsPause(false);
     setIsOpenPrestartModal(false);
   };
+
   return (
     <Panel id={id} className="w-full h-full">
       <SplitLayout

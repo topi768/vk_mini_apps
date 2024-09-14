@@ -22,8 +22,10 @@ export const TimerReverse = ({
         if (secondsRemaining <= 0 && !isPause) {
           onEnd();
         }
+
         if (isPause || secondsRemaining <= 0) {
           clearInterval(intervalId);
+
           return;
         }
 
@@ -38,7 +40,7 @@ export const TimerReverse = ({
     return () => {
       clearInterval(intervalId);
     };
-  }, [isPause, secondsRemaining]);
+  }, [isPause, onEnd, secondsRemaining]);
 
   return (
     <>

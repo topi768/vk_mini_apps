@@ -10,6 +10,7 @@ function handleModuleDirectivesPlugin() {
       if (id.includes("@vkontakte/icons")) {
         code = code.replace(/"use-client";?/g, "");
       }
+
       return { code };
     },
   };
