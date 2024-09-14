@@ -1,13 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
-import { getFindCat } from '../services/api';
-
-
+import { useQuery } from "@tanstack/react-query";
+import { getFindCat } from "../services/api";
 
 export const useFindCat = () => {
   return useQuery({
-    queryKey: ['repoData'],
+    queryKey: ["repoData"],
     queryFn: getFindCat,
-    select: (data) => data.data
-  })
+    select: (data) => data.data,
+  });
 };
-

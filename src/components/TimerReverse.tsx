@@ -1,45 +1,44 @@
-import { useState, useEffect } from 'react'
-import React from 'react'
+import { useState, useEffect } from "react";
 
-import '../App.css'
+import "../App.css";
 
 export const TimerReverse = ({
   isPause,
   startTime,
   onEnd,
 }: {
-  isPause: boolean
-  startTime: number
-  onEnd: () => void
+  isPause: boolean;
+  startTime: number;
+  onEnd: () => void;
 }) => {
   // const [isPause, setIsPause]= useState(false);
-  const [secondsRemaining, setSecondsRemaining] = useState(startTime)
+  const [secondsRemaining, setSecondsRemaining] = useState(startTime);
 
   useEffect(() => {
-    let intervalId: number | undefined
+    let intervalId: number | undefined;
 
     const startTimer = (isPause?: boolean) => {
       intervalId = setInterval(() => {
         if (secondsRemaining <= 0 && !isPause) {
-          onEnd()
+          onEnd();
         }
         if (isPause || secondsRemaining <= 0) {
-          clearInterval(intervalId)
-          return
+          clearInterval(intervalId);
+          return;
         }
 
-        setSecondsRemaining((prevSeconds: number) => prevSeconds - 1)
-      }, 1000)
-    }
+        setSecondsRemaining((prevSeconds: number) => prevSeconds - 1);
+      }, 1000);
+    };
 
     if (!isPause) {
-      startTimer()
+      startTimer();
     }
 
     return () => {
-      clearInterval(intervalId)
-    }
-  }, [isPause, secondsRemaining])
+      clearInterval(intervalId);
+    };
+  }, [isPause, secondsRemaining]);
 
   return (
     <>
@@ -49,5 +48,5 @@ export const TimerReverse = ({
     </>
 
     //
-  )
-}
+  );
+};

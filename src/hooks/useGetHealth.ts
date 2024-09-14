@@ -1,13 +1,10 @@
-import { useQuery } from '@tanstack/react-query';
-import { getHealth } from '../services/api';
-
-
+import { useQuery } from "@tanstack/react-query";
+import { getHealth } from "../services/api";
 
 export const useGetHealth = () => {
   return useQuery({
-    queryKey: ['repoData'],
+    queryKey: ["repoData"],
     queryFn: getHealth,
-    select: (data) => data.data
-  })
+    select: (data) => data.data,
+  });
 };
-

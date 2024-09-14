@@ -1,22 +1,20 @@
-import React from 'react'
+import { Div } from "@vkontakte/vkui";
 
-import { Div } from '@vkontakte/vkui'
-
-import {} from '@vkontakte/icons'
-import { TimerReverse } from './TimerReverse'
-import { createPortal } from 'react-dom'
-const portal = document.getElementById('portal')!
+import {} from "@vkontakte/icons";
+import { TimerReverse } from "./TimerReverse";
+import { createPortal } from "react-dom";
+const portal = document.getElementById("portal")!;
 
 export const PrestartModal = ({
   isOpen,
   onClosePrestartModal,
 }: {
-  isOpen: boolean
-  onClosePrestartModal: () => void
+  isOpen: boolean;
+  onClosePrestartModal: () => void;
 }) => {
   const handleEndTimer = () => {
-    onClosePrestartModal()
-  }
+    onClosePrestartModal();
+  };
 
   if (isOpen) {
     return createPortal(
@@ -28,11 +26,11 @@ export const PrestartModal = ({
       </Div>,
 
       portal,
-    )
+    );
   }
 
   // return (
 
   //   //
   // );
-}
+};

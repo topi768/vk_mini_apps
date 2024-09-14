@@ -1,4 +1,3 @@
 export interface FindCatData {
-    value: number;
-
-  }
+  value: number;
+}
