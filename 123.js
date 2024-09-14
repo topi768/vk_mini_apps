@@ -1,3 +1,4 @@
+import legacy from "@vitejs/plugin-legacy";
 import tailwindcss from "tailwindcss";
 import { join } from "path";
 import { defineConfig } from "vite";
@@ -8,13 +9,6 @@ import viteBasicSslPlugin from "@vitejs/plugin-basic-ssl";
 import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
-  css: {
-    postcss: {
-      plugins: [tailwindcss()],
-    },
-  },
-  base: "./",
-
   plugins: [
     svgr({
       include: /\.svg$/,
@@ -23,7 +17,7 @@ export default defineConfig({
       },
     }),
     react(),
-    // viteBasicSslPlugin(), // ломает vk tunnel
+    viteBasicSslPlugin(),
     alias({
       entries: [
         { find: "@", replacement: join(__dirname, "src") },
@@ -34,15 +28,6 @@ export default defineConfig({
       ],
     }),
   ],
-
-  server: {
-    port: 5173,
-    host: "localhost",
-    hmr: {
-      protocol: "ws",
-      host: "localhost",
-    },
-  },
 
   build: {
     rollupOptions: {
@@ -73,4 +58,25 @@ export default defineConfig({
       },
     },
   },
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
+  },
+  server: {
+    port: 5173,
+    host: "localhost",
+    hmr: {
+      protocol: "ws",
+      host: "localhost",
+    },
+  },
+  // server: {
+  //   port: 5173,
+  //   host: true,
+  //   hmr: {
+  //     host: "192.168.0.10",
+  //     clientPort: 5173,
+  //   },
+  // },
 });
