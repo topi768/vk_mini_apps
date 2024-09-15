@@ -5,12 +5,14 @@ import { TimerReverse } from "./TimerReverse";
 import { createPortal } from "react-dom";
 const portal = document.getElementById("portal")!;
 
-export const PrestartModal = ({
-  isOpen,
-  onClosePrestartModal,
-}: {
+interface PrestartModalProps {
   isOpen: boolean;
   onClosePrestartModal: () => void;
+}
+
+export const PrestartModal: React.FC<PrestartModalProps> = ({
+  isOpen,
+  onClosePrestartModal,
 }) => {
   const handleEndTimer = () => {
     onClosePrestartModal();
