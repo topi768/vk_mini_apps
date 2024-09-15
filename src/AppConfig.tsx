@@ -15,22 +15,23 @@ import { router } from "./routes";
 import { App } from "./App";
 
 export const AppConfig = () => {
-  const vkBridgeAppearance = useAppearance() || undefined;
-  const vkBridgeInsets = useInsets() || undefined;
+  const vkBridgeAppearance = useAppearance();
+  const vkBridgeInsets = useInsets();
   const adaptivity = transformVKBridgeAdaptivity(useAdaptivity());
+
   const { vk_platform } = parseURLSearchParamsForGetLaunchParams(
     window.location.search,
   );
 
   return (
     <ConfigProvider
-      appearance={vkBridgeAppearance}
+      appearance={vkBridgeAppearance || undefined}
       platform={vk_platform === "desktop_web" ? "vkcom" : undefined}
       isWebView={vkBridge.isWebView()}
       hasCustomPanelHeaderAfter={true}
     >
       <AdaptivityProvider {...adaptivity}>
-        <AppRoot mode="full" safeAreaInsets={vkBridgeInsets}>
+        <AppRoot mode="full" safeAreaInsets={vkBridgeInsets || undefined}>
           <RouterProvider router={router}>
             <App />
           </RouterProvider>

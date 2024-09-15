@@ -4,7 +4,7 @@ import { defineConfig } from "vite";
 import svgr from "vite-plugin-svgr";
 
 import alias from "@rollup/plugin-alias";
-import viteBasicSslPlugin from "@vitejs/plugin-basic-ssl";
+// import viteBasicSslPlugin from "@vitejs/plugin-basic-ssl";
 import react from "@vitejs/plugin-react-swc";
 
 export default defineConfig({
@@ -57,6 +57,7 @@ export default defineConfig({
       onLog: (
         level: string,
         log: { message: string | string[] },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         handler: (arg0: any, arg1: unknown) => void,
       ) => {
         // скрыть сообщения о use-client в либах @vkontakte при билде

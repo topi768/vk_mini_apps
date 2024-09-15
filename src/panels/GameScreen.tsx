@@ -1,4 +1,4 @@
-import { FC, useState, useEffect, useRef } from "react";
+import { FC, useState, useRef } from "react";
 import {
   Panel,
   Button,
@@ -34,6 +34,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
 
   const handleClickHint = () => {
     setCountHints(countHints - 1);
+
     if (countHints - 1 <= 0) {
       setIsHindBtnDisabled(true);
     }
@@ -51,29 +52,6 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
 
   const [isPause, setIsPause] = useState(false);
-  const [secondsRemaining, setSecondsRemaining] = useState(30);
-
-  useEffect(() => {
-    let intervalId: number | undefined;
-    const startTimer = () => {
-      intervalId = setInterval(() => {
-        if (isPause || secondsRemaining <= 0) {
-          clearInterval(intervalId);
-          return;
-        }
-
-        setSecondsRemaining((prevSeconds) => prevSeconds - 1);
-      }, 1000);
-    };
-
-    if (!isPause) {
-      startTimer();
-    }
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [isPause, secondsRemaining]);
 
   const handleClickPause = () => {
     setIsPause(true);
@@ -107,10 +85,12 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       </ModalPage>
     </ModalRoot>
   );
+
   const onClosePrestartModal = () => {
     setIsPause(false);
     setIsOpenPrestartModal(false);
   };
+
   return (
     <Panel id={id} className="w-full h-full">
       <SplitLayout

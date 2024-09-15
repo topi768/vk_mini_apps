@@ -20,13 +20,14 @@ export const App = () => {
     if (activePanel == DEFAULT_VIEW_PANELS.HOME) {
       console.log(activePanel);
     }
+
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
       setUser(user);
       setPopout(null);
     }
     fetchData();
-  }, []);
+  }, [activePanel]);
 
   const queryClient = new QueryClient();
 
