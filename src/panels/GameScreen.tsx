@@ -10,8 +10,11 @@ import {
 } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Icon20Pause } from "@vkontakte/icons";
-import { TimerReverse } from "../components/TimerReverse";
-import { PrestartModal } from "../components/PrestartModal";
+import { TimerReverse } from "../components/GameScreen/TimerReverse";
+import { PrestartModal } from "../components/GameScreen/PrestartModal";
+import { HintBtn } from "../components/GameScreen/HintBtn";
+import { PauseBtn } from "../components/GameScreen/PauseBtn";
+import { Header } from "../components/Header";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -30,11 +33,14 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
 
-  const hintCircleRef = useRef<HTMLDivElement>(null);
+  const hintCircleRef = useRef<HTMLImageElement>(null);
 
   const handleClickHint = () => {
-    setCountHints(countHints - 1);
-
+    if (countHints >= 1) {
+      setCountHints(countHints - 1);
+    } else {
+      return;
+    }
     if (countHints - 1 <= 0) {
       setIsHindBtnDisabled(true);
     }
@@ -92,32 +98,36 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
 
   return (
-    <Panel id={id} className="w-full h-full">
+    <Panel id={id} className="w- h-full  ">
+      <Header />
+
       <SplitLayout
         modal={!isOpenPausetModal || modalPauseElement}
-        className="w-full h-full"
       ></SplitLayout>
-      <Div className="flex justify-center w-full h-full">
-        <Button
-          className="max-w-[200px]"
-          disabled={isHindBtnDisabled}
-          onClick={handleClickHint}
-        >
-          {countHints} Подсказки
-        </Button>
-      </Div>
-      <TimerReverse isPause={isPause} startTime={30} onEnd={handleEndTimer} />
 
-      <Button
-        onClick={handleClickPause}
-        className="max-w-[40px] absolute bottom-5 left-1/2 -translate-x-1/2 -translate-y-5"
-      >
-        <Icon20Pause></Icon20Pause>
-      </Button>
-      <div
+      <TimerReverse
+        className="absolute top-9 left-1/2 -translate-x-1/2   translate-y-5"
+        isPause={isPause}
+        startTime={30}
+        onEnd={handleEndTimer}
+      />
+      <div className="flex flex-col absolute bottom-5 left-5">
+        <HintBtn
+          className="my-2"
+          countHint={countHints}
+          onClick={handleClickHint}
+        />
+        <PauseBtn onClick={handleClickPause} />
+      </div>
+      <img
+        src="src/assets/GameScreen/HintCircle.svg"
+        ref={hintCircleRef}
+        alt=""
+      />
+      {/* <div
         className="absolute rounded-full border border-red-500"
         ref={hintCircleRef}
-      ></div>
+      ></div> */}
       <PrestartModal
         onClosePrestartModal={onClosePrestartModal}
         isOpen={isOpenPrestartModal}

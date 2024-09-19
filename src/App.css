@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "NauryzRedKeds";
+  src: url(./assets/fonts/NauryzRedKeds.woff2) format("woff2");
+  font-style: medium;
+  font-weight: 400;
+}
+
 * {
   box-sizing: border-box;
 }

@@ -1,17 +1,18 @@
 import { useState, useEffect } from "react";
-
-import "../App.css";
+import { IconTimer } from "../../assets/ico/IconTimer";
 
 interface TimerProps {
   isPause: boolean;
   startTime: number;
   onEnd: () => void;
+  className?: string;
 }
 
 export const TimerReverse: React.FC<TimerProps> = ({
   isPause,
   startTime,
   onEnd,
+  className = "",
 }) => {
   // const [isPause, setIsPause]= useState(false);
   const [secondsRemaining, setSecondsRemaining] = useState(startTime);
@@ -46,9 +47,17 @@ export const TimerReverse: React.FC<TimerProps> = ({
 
   return (
     <>
-      <p className="font-inter italic font-bold text-9xl leading-12 text-center text-white z-2">
-        {secondsRemaining}
-      </p>
+      <div className={`timer-container ${className}`}>
+        <div className="flex justify-center items-center gap-2.5 py-2 px-5 w-[9.625rem] rounded-full bg-[#8484f0]">
+          <IconTimer />
+          <div className="__label text-white font-['NauryzRedKeds'] text-2xl font-bold leading-[100%]">
+            00:
+            {secondsRemaining.toString().length > 1
+              ? secondsRemaining
+              : `0${secondsRemaining}`}
+          </div>
+        </div>
+      </div>
     </>
 
     //

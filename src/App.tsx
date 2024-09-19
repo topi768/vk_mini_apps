@@ -4,6 +4,7 @@ import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { Home, GameScreen } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
+import { Header } from "./components/Header";
 
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -32,14 +33,16 @@ export const App = () => {
   const queryClient = new QueryClient();
 
   return (
-    <SplitLayout>
-      <QueryClientProvider client={queryClient}></QueryClientProvider>
-      <SplitCol>
-        <View activePanel={activePanel}>
-          <Home id="home" />
-          <GameScreen id="GameScreen" />
-        </View>
-      </SplitCol>
-    </SplitLayout>
+    <>
+      <SplitLayout>
+        <QueryClientProvider client={queryClient}></QueryClientProvider>
+        <SplitCol>
+          <View activePanel={activePanel}>
+            <Home id="home" />
+            <GameScreen id="GameScreen" />
+          </View>
+        </SplitCol>
+      </SplitLayout>
+    </>
   );
 };

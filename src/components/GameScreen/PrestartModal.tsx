@@ -21,7 +21,7 @@ export const PrestartModal: React.FC<PrestartModalProps> = ({
   if (isOpen) {
     return createPortal(
       <Div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-        <Div className="font-inter italic font-bold text-6xl leading-11 text-center text-white">
+        <Div className="flex flex-col justify-center items-center font-inter italic font-bold text-6xl leading-11 text-center text-white">
           <p>СТАРТ ЧЕРЕЗ</p>
           <TimerReverse isPause={false} startTime={3} onEnd={handleEndTimer} />
         </Div>
