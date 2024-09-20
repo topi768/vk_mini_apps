@@ -6,7 +6,6 @@ import { Home } from "./panels/Home";
 import { GameScreen } from "./panels/GameScreen";
 import { Friends } from "./panels/Friends";
 import { DEFAULT_VIEW_PANELS } from "./routes";
-import { Header } from "./components/Header";
 
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

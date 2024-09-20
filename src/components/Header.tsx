@@ -1,14 +1,6 @@
-import { Spacing } from "./ui/Spacing";
-import {
-  Icon12Add,
-  Icon12ArrowDownLeft,
-  Icon12ChevronLeft,
-} from "@vkontakte/icons";
-import { TimerReverse } from "./GameScreen/TimerReverse";
-import { createPortal } from "react-dom";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { Icon12ChevronLeft } from "@vkontakte/icons";
 
-const portal = document.getElementById("portal")!;
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 interface PrestartModalProps {
   className?: string;
@@ -17,9 +9,11 @@ interface PrestartModalProps {
 
 export const Header: React.FC<PrestartModalProps> = ({ className, text }) => {
   const routeNavigator = useRouteNavigator();
+
   const onClick = () => {
     routeNavigator.push("/");
   };
+
   return (
     <>
       <div className={className}>

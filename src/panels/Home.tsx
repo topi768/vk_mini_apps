@@ -1,9 +1,8 @@
 import { FC } from "react";
 
-import { Panel, Button, NavIdProps, Flex } from "@vkontakte/vkui";
+import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Icon20ShareExternalAndroid, Icon20User } from "@vkontakte/icons";
 import LargeButton from "../components/ui/buttons/LargeButton";
 import { Header } from "../components/Header";
 

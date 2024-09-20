@@ -3,7 +3,7 @@ import vkBridge, {
 } from "@vkontakte/vk-bridge";
 import {
   useAdaptivity,
-  useAppearance,
+  // useAppearance,
   useInsets,
 } from "@vkontakte/vk-bridge-react";
 import { AdaptivityProvider, ConfigProvider, AppRoot } from "@vkontakte/vkui";
@@ -15,7 +15,7 @@ import { router } from "./routes";
 import { App } from "./App";
 
 export const AppConfig = () => {
-  const vkBridgeAppearance = useAppearance();
+  // const vkBridgeAppearance = useAppearance();
   const vkBridgeInsets = useInsets();
   const adaptivity = transformVKBridgeAdaptivity(useAdaptivity());
 

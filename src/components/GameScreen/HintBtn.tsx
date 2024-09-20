@@ -1,8 +1,5 @@
-import { Div } from "@vkontakte/vkui";
-
 import {} from "@vkontakte/icons";
-import { TimerReverse } from "./TimerReverse";
-import { createPortal } from "react-dom";
+
 const portal = document.getElementById("portal")!;
 
 interface HintBtnProps {

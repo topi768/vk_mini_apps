@@ -9,7 +9,6 @@ import {
   SplitLayout,
 } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
-import { Icon20Pause } from "@vkontakte/icons";
 import { TimerReverse } from "../components/GameScreen/TimerReverse";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
@@ -23,7 +22,7 @@ export interface OnboardingProps extends NavIdProps {
 
 export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [countHints, setCountHints] = useState(3);
-  const [isHindBtnDisabled, setIsHindBtnDisabled] = useState(false);
+  const [, setIsHindBtnDisabled] = useState(false);
 
   const stepSizeCircle = useRef(80);
   const [posHintCircleX, setPosHintCircleX] = useState(120);
