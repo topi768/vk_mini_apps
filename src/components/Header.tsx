@@ -6,19 +6,20 @@ import {
 } from "@vkontakte/icons";
 import { TimerReverse } from "./GameScreen/TimerReverse";
 import { createPortal } from "react-dom";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+
 const portal = document.getElementById("portal")!;
 
 interface PrestartModalProps {
   className?: string;
-  onClick?: () => void;
   text: string;
 }
 
-export const Header: React.FC<PrestartModalProps> = ({
-  className,
-  onClick,
-  text,
-}) => {
+export const Header: React.FC<PrestartModalProps> = ({ className, text }) => {
+  const routeNavigator = useRouteNavigator();
+  const onClick = () => {
+    routeNavigator.push("/");
+  };
   return (
     <>
       <div className={className}>

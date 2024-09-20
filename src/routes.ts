@@ -13,7 +13,7 @@ export const DEFAULT_VIEW = "default_view";
 export const DEFAULT_VIEW_PANELS = {
   HOME: "home",
   GAMESCREEN: "GameScreen",
-  FRIENDS: "Frieends",
+  FRIENDS: "Friends",
 } as const;
 
 export const routes = RoutesConfig.create([

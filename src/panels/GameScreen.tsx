@@ -102,7 +102,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
 
   return (
     <Panel id={id} className="w- h-full  ">
-      <Header text="Найди котика" onClick={() => routeNavigator.push("/")} />
+      <Header text="Найди котика" />
 
       <SplitLayout
         modal={!isOpenPausetModal || modalPauseElement}
