@@ -1,8 +1,4 @@
-import { CSSProperties, memo } from "react";
-
-type Props = {};
-
-export const IconTimer = memo<Props>(({}) => {
+export const IconTimer = () => {
   return (
     <svg
       width={33}
@@ -21,4 +17,4 @@ export const IconTimer = memo<Props>(({}) => {
       />
     </svg>
   );
-});
+};

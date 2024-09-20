@@ -1,21 +1,7 @@
-import { FC, useState, useRef } from "react";
-import {
-  Panel,
-  Button,
-  Div,
-  NavIdProps,
-  ModalRoot,
-  ModalPage,
-  SplitLayout,
-} from "@vkontakte/vkui";
+import { FC, useState } from "react";
+import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
-import { Icon20Pause } from "@vkontakte/icons";
-import { TimerReverse } from "../components/GameScreen/TimerReverse";
-import { PrestartModal } from "../components/GameScreen/PrestartModal";
-import { HintBtn } from "../components/GameScreen/HintBtn";
-import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Header } from "../components/Header";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Spacing } from "../components/ui/Spacing";
 
 export interface FriendsProps extends NavIdProps {
@@ -23,13 +9,12 @@ export interface FriendsProps extends NavIdProps {
 }
 
 export const Friends: FC<FriendsProps> = ({ id }) => {
-  const routeNavigator = useRouteNavigator();
   interface Friend {
     name: string;
     avatar: string;
     rank: string;
   }
-  const [friendsList, setFriendsList] = useState<Friend[]>([
+  const [friendsList] = useState<Friend[]>([
     // {
     //   name: "Владимир Котов",
     //   avatar: "src/assets/base/avatar.svg",

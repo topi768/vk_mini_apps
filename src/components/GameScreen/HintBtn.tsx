@@ -1,7 +1,5 @@
 import {} from "@vkontakte/icons";
 
-const portal = document.getElementById("portal")!;
-
 interface HintBtnProps {
   countHint: number;
   onClick: () => void;

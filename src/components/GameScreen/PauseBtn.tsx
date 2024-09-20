@@ -1,7 +1,3 @@
-import {} from "@vkontakte/icons";
-
-const portal = document.getElementById("portal")!;
-
 interface PauseBtnProps {
   onClick: () => void;
 }

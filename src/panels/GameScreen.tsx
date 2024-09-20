@@ -14,7 +14,6 @@ import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Header } from "../components/Header";
-import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -97,7 +96,6 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsPause(false);
     setIsOpenPrestartModal(false);
   };
-  const routeNavigator = useRouteNavigator();
 
   return (
     <Panel id={id} className="w- h-full  ">
