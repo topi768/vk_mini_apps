@@ -54,12 +54,7 @@ export default defineConfig({
           cropper: ["cropperjs"],
         },
       },
-      onLog: (
-        level: string,
-        log: { message: string | string[] },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        handler: (arg0: any, arg1: unknown) => void,
-      ) => {
+      onLog: (level, log, handler) => {
         // скрыть сообщения о use-client в либах @vkontakte при билде
         if (
           level === "warn" &&
@@ -68,9 +63,9 @@ export default defineConfig({
           log.message.includes("was ignored")
         ) {
           return;
+        } else {
+          handler(level, log);
         }
-
-        handler(level, log);
       },
     },
   },
