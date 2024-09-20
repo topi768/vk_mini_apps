@@ -7,6 +7,7 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import LargeButton from "../components/ui/buttons/LargeButton";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
+import AchievementsIcon from "@/assets/ico/achievements.svg";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -15,6 +16,7 @@ export interface HomeProps extends NavIdProps {
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const [balance, setBalance] = useState(5);
+
   return (
     <>
       <Panel id={id}>
@@ -31,11 +33,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
           </div>
           <div className="flex items-center absolute right-0 top-1/2 -translate-y-1/2">
             <p className="text-grey">{balance} кис-кисов</p>
-
-            <img
-              src=".\src\assets\ico\ChevronRight.svg"
-              className="w-8 h-6 text-grey pointer"
-            />
+            <AchievementsIcon className="w-8 h-6 text-grey pointer" />
           </div>
         </div>
         <div className="w-full">
