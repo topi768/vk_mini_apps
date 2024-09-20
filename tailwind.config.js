@@ -16,6 +16,7 @@ export default {
       colors: {
         primary: "#8484F0",
         btnDisabled: "#C9C9ED",
+        grey: "#DFDFDF",
       },
     },
   },
