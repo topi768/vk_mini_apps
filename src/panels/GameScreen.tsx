@@ -99,6 +99,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsOpenPrestartModal(false);
   };
   const routeNavigator = useRouteNavigator();
+
   return (
     <Panel id={id} className="w- h-full  ">
       <Header text="Найди котика" onClick={() => routeNavigator.push("/")} />

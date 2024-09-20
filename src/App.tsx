@@ -2,7 +2,10 @@ import { useState, useEffect, ReactNode } from "react";
 import { View, SplitLayout, SplitCol, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import bridge, { UserInfo } from "@vkontakte/vk-bridge";
-import { Home, GameScreen, Friends } from "./panels";
+// import { Home, GameScreen, Friends } from "./panels";
+import { Home } from "./panels/Home";
+import { GameScreen } from "./panels/GameScreen";
+import { Friends } from "./panels/Friends";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 import { Header } from "./components/Header";
 
