@@ -2,7 +2,7 @@ import { useState, useEffect, ReactNode } from "react";
 import { View, SplitLayout, SplitCol, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import bridge, { UserInfo } from "@vkontakte/vk-bridge";
-import { Home, GameScreen } from "./panels";
+import { Home, GameScreen, Friends } from "./panels";
 import { DEFAULT_VIEW_PANELS } from "./routes";
 import { Header } from "./components/Header";
 
@@ -37,9 +37,10 @@ export const App = () => {
       <SplitLayout>
         <QueryClientProvider client={queryClient}></QueryClientProvider>
         <SplitCol>
-          <View activePanel={activePanel}>
+          <View activePanel={"Friends"}>
             <Home id="home" />
             <GameScreen id="GameScreen" />
+            <Friends id="Friends" />
           </View>
         </SplitCol>
       </SplitLayout>

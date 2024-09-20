@@ -15,6 +15,7 @@ import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Header } from "../components/Header";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -41,6 +42,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     } else {
       return;
     }
+
     if (countHints - 1 <= 0) {
       setIsHindBtnDisabled(true);
     }
@@ -96,10 +98,10 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsPause(false);
     setIsOpenPrestartModal(false);
   };
-
+  const routeNavigator = useRouteNavigator();
   return (
     <Panel id={id} className="w- h-full  ">
-      <Header />
+      <Header text="Найди котика" onClick={() => routeNavigator.push("/")} />
 
       <SplitLayout
         modal={!isOpenPausetModal || modalPauseElement}
@@ -122,7 +124,9 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
       <img
         src="src/assets/GameScreen/HintCircle.svg"
         ref={hintCircleRef}
-        alt=""
+        style={{
+          display: "none",
+        }}
       />
       {/* <div
         className="absolute rounded-full border border-red-500"

@@ -13,6 +13,7 @@ export const DEFAULT_VIEW = "default_view";
 export const DEFAULT_VIEW_PANELS = {
   HOME: "home",
   GAMESCREEN: "GameScreen",
+  FRIENDS: "Frieends",
 } as const;
 
 export const routes = RoutesConfig.create([
@@ -22,6 +23,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.GAMESCREEN,
         `/${DEFAULT_VIEW_PANELS.GAMESCREEN}`,
+        [],
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.FRIENDS,
+        `/${DEFAULT_VIEW_PANELS.FRIENDS}`,
         [],
       ),
     ]),
