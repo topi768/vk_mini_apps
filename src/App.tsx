@@ -5,6 +5,8 @@ import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { Home } from "./panels/Home";
 import { GameScreen } from "./panels/GameScreen";
 import { Friends } from "./panels/Friends";
+import { Friend } from "./panels/Friend";
+
 import { DEFAULT_VIEW_PANELS } from "./routes";
 
 import "./App.css";
@@ -37,13 +39,14 @@ export const App = () => {
     <>
       <SplitLayout>
         <QueryClientProvider client={queryClient}></QueryClientProvider>
-        <SplitCol>
-          <View activePanel={activePanel}>
-            <Home id="home" />
-            <GameScreen id="GameScreen" />
-            <Friends id="Friends" />
-          </View>
-        </SplitCol>
+        {/* <SplitCol> */}
+        <View activePanel={activePanel}>
+          <Home id="home" />
+          <GameScreen id="GameScreen" />
+          <Friends id="Friends" />
+          <Friend id="Friend" />
+        </View>
+        {/* </SplitCol> */}
       </SplitLayout>
     </>
   );

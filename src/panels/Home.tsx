@@ -15,6 +15,7 @@ export interface HomeProps extends NavIdProps {
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const [balance, setBalance] = useState(5);
+
   return (
     <>
       <Panel id={id}>
@@ -24,7 +25,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
           <div className="flex  w-full items-center">
             <img
               className="text-black m-4  my-3 w-8 h-8"
-              src=".\src\assets\ico\Name=kiskis.svg"
+              src=".\src\assets\icons\balance.svg"
               alt=""
             />
             <p>Баланс</p>
@@ -33,7 +34,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
             <p className="text-grey">{balance} кис-кисов</p>
 
             <img
-              src=".\src\assets\ico\ChevronRight.svg"
+              src=".\src\assets\icons\ChevronRight.svg"
               className="w-8 h-6 text-grey pointer"
             />
           </div>
@@ -42,7 +43,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
           <div className="flex w-full items-center">
             <img
               className="text-black m-4  w-8 h-8"
-              src="\src\assets\ico\Name=achievements.svg"
+              src="\src\assets\icons\achievements.svg"
               alt=""
             />
             <p>Достижения</p>

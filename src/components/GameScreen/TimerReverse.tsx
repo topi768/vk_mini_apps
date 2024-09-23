@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { IconTimer } from "../../assets/ico/IconTimer";
+import IconTimer from "@/assets/icons/timer.svg";
 
 interface TimerProps {
   isPause: boolean;

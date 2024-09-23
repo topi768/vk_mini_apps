@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
@@ -6,42 +6,56 @@ import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
 
-export interface FriendsProps extends NavIdProps {
+export interface FriendProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
 
-export const Friends: FC<FriendsProps> = ({ id }) => {
+export const Friend: FC<FriendProps> = ({ id }) => {
   interface Friend {
     name: string;
     avatar: string;
     rank: string;
+    score: number;
   }
   const [friendsList] = useState<Friend[]>([
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      score: 245658213,
     },
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      score: 197357618,
     },
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      score: 206121003,
     },
   ]);
 
+  function formatScore(score: number) {
+    return score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+  const [sortedFriendsList, setSortedFriendsList] = useState<Friend[]>([]);
+  useEffect(() => {
+    if (friendsList.length > 0) {
+      const sortedList = friendsList.sort((a, b) => b.score - a.score);
+      setSortedFriendsList(sortedList);
+    }
+  });
   return (
     <Panel id={id} className="w-full h-full ">
       <div className="w-full h-full ">
         <Header text="Друзья" />
         <Spacing />
         <div className="p-6">
-          {friendsList.length > 0 ? (
-            friendsList.map((friend, index) => (
+          {sortedFriendsList.length > 0 ? (
+            sortedFriendsList.map((friend, index) => (
               <div key={index} className="">
                 <div className="flex relative my-3 ">
                   <img className="mr-2" src={friend.avatar} alt="" />
@@ -53,8 +67,8 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
                       {friend.rank}
                     </p>
                   </div>
-                  <button className="absolute -translate-y-1/2 top-1/2 right-0">
-                    <ChevronRight />
+                  <button className="absolute -translate-y-1/2 top-1/2 right-0 text-black font-['NauryzRedKeds'] text-sm font-bold leading-[1.375rem]">
+                    {formatScore(friend.score)}
                   </button>
                 </div>
               </div>
