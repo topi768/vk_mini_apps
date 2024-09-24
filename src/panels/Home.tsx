@@ -31,7 +31,6 @@ export const Home: FC<HomeProps> = ({ id }) => {
           </div>
           <div className="flex items-center absolute right-0 top-1/2 -translate-y-1/2">
             <p className="text-grey">{balance} кис-кисов</p>
-
             <img
               src=".\src\assets\icons\ChevronRight.svg"
               className="w-8 h-6 text-grey pointer"
