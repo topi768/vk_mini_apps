@@ -46,7 +46,7 @@ export const Friend: FC<FriendProps> = ({ id }) => {
       const sortedList = friendsList.sort((a, b) => b.score - a.score);
       setSortedFriendsList(sortedList);
     }
-  });
+  }, [friendsList]);
 
   return (
     <Panel id={id} className="w-full h-full ">
