@@ -1,5 +1,5 @@
 import { useState, useEffect, ReactNode } from "react";
-import { View, SplitLayout, SplitCol, ScreenSpinner } from "@vkontakte/vkui";
+import { View, SplitLayout, ScreenSpinner } from "@vkontakte/vkui";
 import { useActiveVkuiLocation } from "@vkontakte/vk-mini-apps-router";
 import bridge, { UserInfo } from "@vkontakte/vk-bridge";
 import { Home } from "./panels/Home";

@@ -4,7 +4,6 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
-import ChevronRight from "@/assets/icons/chevronRight.svg";
 
 export interface FriendProps extends NavIdProps {
   fetchedUser?: UserInfo;

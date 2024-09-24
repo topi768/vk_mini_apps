@@ -1,10 +1,8 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
-import MediumButton from "../components/ui/buttons/MediumButton";
-import ChevronRight from "@/assets/icons/chevronRight.svg";
 import IconSearch from "@/assets/icons/search.svg";
 import IconAchievement from "@/assets/icons/achievements.svg";
 

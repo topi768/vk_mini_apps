@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { Icon12ChevronRight } from "@vkontakte/icons";
 
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
@@ -14,7 +13,7 @@ export interface HomeProps extends NavIdProps {
 
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-  const [balance, setBalance] = useState(5);
+  const [balance] = useState(5);
 
   return (
     <>
