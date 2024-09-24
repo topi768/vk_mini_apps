@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
+import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
 export interface FriendsProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -15,24 +16,33 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
     name: string;
     avatar: string;
     rank: string;
+    id: number;
   }
   const [friendsList] = useState<Friend[]>([
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      id: 1,
     },
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      id: 2,
     },
     {
       name: "Владимир Котов",
       avatar: "src/assets/base/avatar.svg",
       rank: "Сержант Кискисенко",
+      id: 3,
     },
   ]);
+  const routeNavigator = useRouteNavigator();
+
+  const openFriend = (id: number) => {
+    routeNavigator.push(`/friend/${id}`);
+  };
 
   return (
     <Panel id={id} className="w-full h-full ">
@@ -53,7 +63,10 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
                       {friend.rank}
                     </p>
                   </div>
-                  <button className="absolute -translate-y-1/2 top-1/2 right-0">
+                  <button
+                    onClick={() => openFriend(friend.id)}
+                    className="absolute -translate-y-1/2 top-1/2 right-0"
+                  >
                     <ChevronRight />
                   </button>
                 </div>
