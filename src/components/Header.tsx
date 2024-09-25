@@ -1,6 +1,7 @@
 import { Icon12ChevronLeft } from "@vkontakte/icons";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { Spacing } from "../components/ui/Spacing";
 
 interface PrestartModalProps {
   className?: string;
@@ -17,7 +18,7 @@ export const Header: React.FC<PrestartModalProps> = ({ className, text }) => {
   return (
     <>
       <div className={className}>
-        <header className="p-3 h-12 w-full flex align-center">
+        <header className="py-3  h-12 w-full flex align-center ">
           <button
             onClick={onClick}
             className=" left-0  flex justify-center items-center py-1 px-2 w-8 h-8 rounded-full bg-black  "

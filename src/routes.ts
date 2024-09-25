@@ -15,6 +15,7 @@ export const DEFAULT_VIEW_PANELS = {
   GAMESCREEN: "GameScreen",
   FRIENDS: "Friends",
   FRIEND: "Friend",
+  SCORELIST: "ScoreList",
 } as const;
 
 const PARAMETER_ROUTE = "/friend/:id";
@@ -26,6 +27,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.GAMESCREEN,
         `/${DEFAULT_VIEW_PANELS.GAMESCREEN}`,
+        [],
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.SCORELIST,
+        `/${DEFAULT_VIEW_PANELS.SCORELIST}`,
         [],
       ),
       createPanel(

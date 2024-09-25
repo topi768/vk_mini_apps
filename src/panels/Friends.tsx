@@ -52,7 +52,7 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
         <div className="p-6">
           {friendsList.length > 0 ? (
             friendsList.map((friend, index) => (
-              <div key={index} className="">
+              <div key={index}>
                 <div className="flex relative my-3 ">
                   <img className="mr-2" src={friend.avatar} alt="" />
                   <div className="h-full flex flex-col  gap-2">

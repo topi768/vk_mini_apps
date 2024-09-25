@@ -5,11 +5,11 @@ import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
 
-export interface FriendProps extends NavIdProps {
+export interface ScoreListProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
 
-export const Friend: FC<FriendProps> = ({ id }) => {
+export const ScoreList: FC<ScoreListProps> = ({ id }) => {
   interface Friend {
     name: string;
     avatar: string;

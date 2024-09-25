@@ -6,6 +6,7 @@ import { Home } from "./panels/Home";
 import { GameScreen } from "./panels/GameScreen";
 import { Friends } from "./panels/Friends";
 import { Friend } from "./panels/Friend";
+import { ScoreList } from "./panels/ScoreList";
 
 import { DEFAULT_VIEW_PANELS } from "./routes";
 
@@ -45,6 +46,7 @@ export const App = () => {
           <GameScreen id="GameScreen" />
           <Friends id="Friends" />
           <Friend id="Friend" />
+          <ScoreList id="ScoreList" />
         </View>
         {/* </SplitCol> */}
       </SplitLayout>
