@@ -14,7 +14,7 @@ import IconInvite from "@/assets/icons/invite.svg";
 import IconSettings from "@/assets/icons/settings.svg";
 import IconHelp from "@/assets/icons/help.svg";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
-import { Avatar } from "../components/Avatar";
+// import { Avatar } from "../components/Avatar";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;

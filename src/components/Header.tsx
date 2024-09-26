@@ -1,7 +1,6 @@
 import { Icon12ChevronLeft } from "@vkontakte/icons";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import { Spacing } from "../components/ui/Spacing";
 
 interface PrestartModalProps {
   className?: string;
