@@ -19,7 +19,6 @@ export interface HomeProps extends NavIdProps {
 
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
-  const [balance] = useState(5);
 
   return (
     <>
