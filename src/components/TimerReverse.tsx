@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import IconTimer from "@/assets/icons/timer.svg";
 
 interface TimerProps {
   isPause: boolean;
@@ -17,7 +16,6 @@ export const TimerReverse: React.FC<TimerProps> = ({
   // const [isPause, setIsPause]= useState(false);
 
   const [secondsRemaining, setSecondsRemaining] = useState(startTime);
-  const [formatedSecond, setFormatedSecond] = useState("00:00:00");
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined = undefined;
 
