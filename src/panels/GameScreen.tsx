@@ -9,7 +9,7 @@ import {
   SplitLayout,
 } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
-import { TimerReverse } from "../components/GameScreen/TimerReverse";
+import { TimerReverse } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";

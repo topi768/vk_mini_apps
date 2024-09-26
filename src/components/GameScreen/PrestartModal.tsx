@@ -1,7 +1,7 @@
 import { Div } from "@vkontakte/vkui";
 
 import {} from "@vkontakte/icons";
-import { TimerReverse } from "./TimerReverse";
+import { TimerReverse } from "./GameTimer";
 import { createPortal } from "react-dom";
 const portal = document.getElementById("portal")!;
 

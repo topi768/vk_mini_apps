@@ -2,12 +2,12 @@ import { Icon12ChevronLeft } from "@vkontakte/icons";
 
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 
-interface PrestartModalProps {
+interface HeaderProps {
   className?: string;
   text: string;
 }
 
-export const Header: React.FC<PrestartModalProps> = ({ className, text }) => {
+export const Header: React.FC<HeaderProps> = ({ className, text }) => {
   const routeNavigator = useRouteNavigator();
 
   const onClick = () => {
