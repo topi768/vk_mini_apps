@@ -47,9 +47,9 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
   return (
     <Panel id={id} className="w-full h-full ">
       <div className="w-full h-full ">
-        <Header text="Друзья" />
-        <Spacing />
-        <div className="p-6">
+        <div className="px-6">
+          <Header text="Друзья" />
+          <Spacing />
           {friendsList.length > 0 ? (
             friendsList.map((friend, index) => (
               <div key={index}>

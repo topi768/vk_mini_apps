@@ -14,7 +14,7 @@ import IconInvite from "@/assets/icons/invite.svg";
 import IconSettings from "@/assets/icons/settings.svg";
 import IconHelp from "@/assets/icons/help.svg";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
-// import { Avatar } from "../components/Avatar";
+import { Avatar } from "../components/Avatar";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -27,10 +27,25 @@ export const Home: FC<HomeProps> = ({ id }) => {
   return (
     <>
       <Panel id={id} className="px-6">
-        {/* <Avatar /> */}
         <Header text="Меню" />
-        <Spacing />
+
         <div className="px-6">
+          <Spacing />
+          <div>
+            <div className="flex relative my-7 ">
+              <Avatar className="mr-6" />
+              <div className="h-full flex flex-col  gap-2">
+                <h3 className=" text-[1.0625rem] mt-3 font-bold leading-[1.375rem]">
+                  {"Владимир Котов"}
+                </h3>
+                <p className=" text-[#8484f0] leading-[1.125rem]">
+                  {"Сержант Кискисенко "}
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <Spacing />
           <div className="w-full flex">
             <div className="flex  w-full items-center">
               <IconBalance className="text-black mr-4 my-4  my-3 w-8 h-8" />
