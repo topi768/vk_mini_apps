@@ -1,6 +1,6 @@
 import IconBaseAvatar1 from "@/assets/icons/baseAvatar/avatar/1.svg";
-import IconBaseAvatar2 from "@/assets/icons/baseAvatar/avatar/2.svg";
-import IconBaseAvatar3 from "@/assets/icons/baseAvatar/avatar/3.svg";
+// import IconBaseAvatar2 from "@/assets/icons/baseAvatar/avatar/2.svg";
+// import IconBaseAvatar3 from "@/assets/icons/baseAvatar/avatar/3.svg";
 import Gerland from "./ui/Gerland";
 interface AvatarProps {
   srcImage?: string;
@@ -10,9 +10,9 @@ interface AvatarProps {
 }
 
 export const Avatar: React.FC<AvatarProps> = ({
-  srcImage = "",
+  // srcImage = "",
   className,
-  typeBaseAvatar = 1,
+  // typeBaseAvatar = 1,
   typeRank = 1,
 }) => {
   return (
