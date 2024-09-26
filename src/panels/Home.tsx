@@ -6,14 +6,9 @@ import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import LargeButton from "../components/ui/buttons/LargeButton";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
-
-import IconInvite from "@/assets/icons/invite.svg";
-import IconSettings from "@/assets/icons/settings.svg";
-import IconHelp from "@/assets/icons/help.svg";
 import IconScore from "@/assets/icons/score.svg";
 import IconTop from "@/assets/icons/top.svg";
 import IconSearch from "@/assets/icons/search.svg";
-import ChevronRight from "@/assets/icons/chevronRight.svg";
 import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
