@@ -17,6 +17,7 @@ import ChevronRight from "@/assets/icons/chevronRight.svg";
 import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
+
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
