@@ -4,7 +4,6 @@ import IconBalance from "@/assets/icons/balance.svg";
 import IconFriends from "@/assets/icons/friends.svg";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Avatar } from "../components/Avatar";
-import ChevronRight from "@/assets/icons/chevronRight.svg";
 
 interface FooterProps {
   className?: string;
