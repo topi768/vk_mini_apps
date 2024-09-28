@@ -38,7 +38,7 @@ export const App = () => {
 
   return (
     <>
-      <SplitLayout>
+      <SplitLayout className="">
         <QueryClientProvider client={queryClient}></QueryClientProvider>
         {/* <SplitCol> */}
         <View activePanel={activePanel}>
