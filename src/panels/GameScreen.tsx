@@ -7,6 +7,7 @@ import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
+import { Results } from "../components/GameScreen/Results";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -28,6 +29,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
   const [startSeconds, setStartSeconds] = useState(30);
+  const [isOpenResults, setIsOpenResults] = useState(true);
   const hintCircleRef = useRef<HTMLImageElement>(null);
 
   const handleClickHint = () => {
@@ -181,6 +183,10 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         <PrestartModal
           onClosePrestartModal={onClosePrestartModal}
           isOpen={isOpenPrestartModal}
+        />
+        <Results
+          isOpen={isOpenResults}
+          results={{ score: 123, amountCat: 5, timeLeft: "00:05" }}
         />
       </div>
     </Panel>

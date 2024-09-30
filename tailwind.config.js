@@ -17,6 +17,7 @@ export default {
         primary: "#8484F0",
         btnDisabled: "#C9C9ED",
         grey: "#DFDFDF",
+        grey02: "#F5F8F9",
       },
     },
   },
