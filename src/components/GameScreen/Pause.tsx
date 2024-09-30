@@ -10,25 +10,8 @@ interface PauseModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
-import {
-  Panel,
-  Button,
-  NavIdProps,
-  ModalRoot,
-  ModalPage,
-  SplitLayout,
-} from "@vkontakte/vkui";
 
 export const PauseModal: React.FC<PauseModalProps> = ({ isOpen, onClose }) => {
-  const ondoarding = (
-    <ModalRoot activeModal="ondoarding">
-      <ModalPage
-        className=" w-full h-full"
-        id="ondoarding"
-        hideCloseButton
-      ></ModalPage>
-    </ModalRoot>
-  );
   const routeNavigator = useRouteNavigator();
 
   const onExit = () => {
@@ -60,9 +43,4 @@ export const PauseModal: React.FC<PauseModalProps> = ({ isOpen, onClose }) => {
       portal,
     );
   }
-
-  // return (
-
-  //   //
-  // );
 };
