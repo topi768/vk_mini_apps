@@ -3,7 +3,7 @@ import { FC } from "react";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
-import LargeButton from "../components/ui/buttons/LargeButton";
+import { LargeButton } from "../components/ui/buttons/LargeButton";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import IconScore from "@/assets/icons/score.svg";

@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { Avatar } from "../../components/Avatar";
 import { useState, useEffect } from "react";
 import { SmallButton } from "../ui/buttons/SmallButton";
-import LargeButton from "../ui/buttons/LargeButton";
+import { LargeButton } from "../ui/buttons/LargeButton";
 
 const portal = document.getElementById("portal")!;
 

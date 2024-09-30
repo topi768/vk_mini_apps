@@ -1,25 +1,63 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 interface LargeButtonProps {
   text: string;
   onClick?: () => void;
+  isDisabled?: boolean;
+  isPrimary?: boolean;
+  color?: string;
   className?: string;
-  disabled?: boolean;
 }
-const LargeButton: React.FC<LargeButtonProps> = ({
+
+export const LargeButton: React.FC<LargeButtonProps> = ({
   text,
   onClick,
-  disabled = false,
+  isDisabled = false,
+  isPrimary = true,
+  color = "primary",
   className = "",
-}) => (
-  <div className={`${className} flex justify-center`}>
-    <button
-      onClick={onClick}
-      className={`flex justify-center items-center gap-2.5 p-2 w-[18.3125rem] rounded-full bg-primary  text-white  font-medium leading-[1.375rem] ${disabled ? "bg-btnDisabled" : "bg-primary"}`}
-    >
-      {text}
-    </button>
-  </div>
-);
+}) => {
+  // Создаем реф для кнопки
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
-export default LargeButton;
+  // Используем useEffect для изменения стилей через ref
+  useEffect(() => {
+    if (buttonRef.current && !isPrimary && !isDisabled && color) {
+      // Устанавливаем цвет текста и границы через ref
+      buttonRef.current.style.borderColor = color;
+      buttonRef.current.style.color = color;
+    }
+  }, [isPrimary, isDisabled, color]); // Следим за изменениями color, isPrimary, isDisabled
+
+  const bgColor = () => {
+    if (isPrimary) {
+      if (isDisabled) {
+        return "bg-btnDisabled text-white";
+      } else {
+        return "bg-primary text-white";
+      }
+    }
+
+    if (!isPrimary) {
+      if (isDisabled) {
+        return "border-2 border-btnDisabled text-btnDisabled";
+      } else {
+        // Возвращаем класс только для базовых стилей без цвета
+        return "border-2";
+      }
+    }
+  };
+
+  return (
+    <div className="w-full flex justify-center">
+      <button
+        ref={buttonRef} // Присваиваем реф кнопке
+        onClick={onClick}
+        className={`inline-flex font-bold cursor-pointer justify-center items-center rounded-full w-4/5 px-3 py-2 ${bgColor()} ${className}`}
+        disabled={isDisabled} // Делаем кнопку неактивной, если передан флаг isDisabled
+      >
+        {text}
+      </button>
+    </div>
+  );
+};

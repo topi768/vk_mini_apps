@@ -1,18 +1,12 @@
 import { FC, useState, useRef } from "react";
-import {
-  Panel,
-  Button,
-  NavIdProps,
-  ModalRoot,
-  ModalPage,
-  SplitLayout,
-} from "@vkontakte/vkui";
+import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { TimerReverse } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Onboarding } from "../components/GameScreen/Onboarding";
+import { PauseModal } from "../components/GameScreen/Pause";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -30,11 +24,11 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     (3 + 1) * stepSizeCircle.current,
   );
 
-  const [isOpenOnboarding, setIsOpenOnboarding] = useState(true);
+  const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const hintCircleRef = useRef<HTMLImageElement>(null);
   const [startSeconds, setStartSeconds] = useState(30);
+  const hintCircleRef = useRef<HTMLImageElement>(null);
 
   const handleClickHint = () => {
     if (countHints >= 1) {
@@ -71,50 +65,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsOpenPrestartModal(true);
   };
 
-  const selectedModal = () => {
-    if (isOpenPausetModal) {
-      return <SplitLayout modal={modalPauseElement}></SplitLayout>;
-    }
-
-    if (isOpenOnboarding) {
-      return <SplitLayout modal={ondoarding}></SplitLayout>;
-    }
-
-    return null;
-  };
-
   const handleEndTimer = () => {};
-
-  const modalPauseElement = (
-    <ModalRoot activeModal="pause">
-      <ModalPage
-        style={{ minHeight: "200px" }}
-        id="pause"
-        dynamicContentHeight
-        hideCloseButton
-      >
-        <div className="p-[120px] relative  ">
-          <h3 className="absolute w-full top-5 left-0 text-center">Пауза</h3>
-          <Button
-            onClick={handleClosePauseModel}
-            className=" absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-5 "
-          >
-            Продолжить
-          </Button>
-        </div>
-      </ModalPage>
-    </ModalRoot>
-  );
-
-  const ondoarding = (
-    <ModalRoot activeModal="ondoarding">
-      <ModalPage
-        className=" w-full h-full"
-        id="ondoarding"
-        hideCloseButton
-      ></ModalPage>
-    </ModalRoot>
-  );
 
   const onClosePrestartModal = () => {
     setIsPause(false);
@@ -191,13 +142,16 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
 
   return (
-    <Panel id={id} className="w- h-full relative ">
-      {selectedModal()}
+    <Panel id={id} className=" h-full relative ">
       <div>
         <Onboarding
           isOpen={isOpenOnboarding}
           onHighlightChange={handleHighlightChange}
           onEnd={() => setIsOpenOnboarding(false)}
+        />
+        <PauseModal
+          onClose={handleClosePauseModel}
+          isOpen={isOpenPausetModal}
         />
         <TimerReverse
           className="absolute top-9 left-1/2 -translate-x-1/2   translate-y-5"
@@ -224,10 +178,6 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
             display: "none",
           }}
         />
-        {/* <div
-        className="absolute rounded-full border border-red-500"
-        ref={hintCircleRef}
-      ></div> */}
         <PrestartModal
           onClosePrestartModal={onClosePrestartModal}
           isOpen={isOpenPrestartModal}
