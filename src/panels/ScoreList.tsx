@@ -50,7 +50,7 @@ export const ScoreList: FC<ScoreListProps> = ({ id }) => {
 
   return (
     <Panel id={id} className="w-full h-full ">
-      <div className="w-full h-full ">
+      <div className="w-full h-full px-6">
         <Header text="Друзья" />
         <Spacing />
         <div className="p-6">
