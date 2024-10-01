@@ -8,20 +8,36 @@ import { ProgressBar } from "../ui/ProgressBar";
 import IconSearch from "@/assets/icons/search.svg";
 import IconScore from "@/assets/icons/score.svg";
 import IconTimer from "@/assets/icons/timerBlack.svg";
-
+import { usePlayerStore } from "../../store";
+import { useEffect } from "react";
 const portal = document.getElementById("portal")!;
-
 interface ResultsProps {
   isOpen: boolean;
   results: { score: number; amountCat: number; timeLeft: string };
+  onClose: () => void;
 }
 
-export const Results: React.FC<ResultsProps> = ({ isOpen, results }) => {
+export const Results: React.FC<ResultsProps> = ({
+  isOpen,
+  results,
+  onClose,
+}) => {
+  const rang = usePlayerStore((state) => state.rang);
+
   const routeNavigator = useRouteNavigator();
+  const score = usePlayerStore((state) => state.score);
 
   const onExit = () => {
     routeNavigator.push("/");
+    onClose();
   };
+
+  useEffect(() => {
+    if (isOpen && results) {
+      usePlayerStore.getState().incrementScore(results.score);
+      usePlayerStore.getState().incrementAmountCat(results.amountCat);
+    }
+  }, [isOpen, results]);
 
   if (isOpen) {
     return createPortal(
@@ -30,9 +46,8 @@ export const Results: React.FC<ResultsProps> = ({ isOpen, results }) => {
           <div className="text-center font-[18px] bg-white px-7 py-10 rounded-2xl relative w-full">
             <div className="mb-2">
               <Avatar className="absolute -top-[40px] left-1/2 -translate-x-1/2" />
-
               <p>Уровень 1</p>
-              <p className="text-primary">Рядовой Мурчалов</p>
+              <p className="text-primary">{rang}</p>
               <ProgressBar current={1} max={5} />
             </div>
 

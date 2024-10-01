@@ -28,8 +28,8 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(30);
-  const [isOpenResults, setIsOpenResults] = useState(true);
+  const [startSeconds, setStartSeconds] = useState(3);
+  const [isOpenResults, setIsOpenResults] = useState(false);
   const hintCircleRef = useRef<HTMLImageElement>(null);
 
   const handleClickHint = () => {
@@ -67,7 +67,9 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsOpenPrestartModal(true);
   };
 
-  const handleEndTimer = () => {};
+  const handleEndTimer = () => {
+    setIsOpenResults(true);
+  };
 
   const onClosePrestartModal = () => {
     setIsPause(false);
@@ -187,6 +189,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         <Results
           isOpen={isOpenResults}
           results={{ score: 123, amountCat: 5, timeLeft: "00:05" }}
+          onClose={() => setIsOpenResults(false)}
         />
       </div>
     </Panel>
