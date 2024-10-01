@@ -8,6 +8,7 @@ import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
 import { Results } from "../components/GameScreen/Results";
+import { HintCircle } from "../components/GameScreen/HintCircle";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -15,43 +16,17 @@ export interface OnboardingProps extends NavIdProps {
 
 export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [countHints, setCountHints] = useState(3);
-
-  const [, setIsHindBtnDisabled] = useState(false);
-
-  const stepSizeCircle = useRef(80);
-  const [posHintCircleX, setPosHintCircleX] = useState(120);
-  const [posHintCircleY, setPosHintCircleY] = useState(130);
-  const [radiusHintCircle, setRadiusHintCircle] = useState(
-    (3 + 1) * stepSizeCircle.current,
-  );
-
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(3);
+  const [startSeconds, setStartSeconds] = useState(30);
   const [isOpenResults, setIsOpenResults] = useState(false);
-  const hintCircleRef = useRef<HTMLImageElement>(null);
 
   const handleClickHint = () => {
     if (countHints >= 1) {
       setCountHints(countHints - 1);
     } else {
       return;
-    }
-
-    if (countHints - 1 <= 0) {
-      setIsHindBtnDisabled(true);
-    }
-
-    setRadiusHintCircle(countHints * stepSizeCircle.current);
-    setPosHintCircleX(stepSizeCircle.current / 2 + posHintCircleX);
-    setPosHintCircleY(stepSizeCircle.current / 2 + posHintCircleY);
-
-    if (hintCircleRef.current) {
-      hintCircleRef.current.style.display = "block";
-      hintCircleRef.current.style.transform = `translate(${posHintCircleX}px, ${posHintCircleY}px)`;
-      hintCircleRef.current.style.width = `${radiusHintCircle}px`;
-      hintCircleRef.current.style.height = `${radiusHintCircle}px`;
     }
   };
 
@@ -175,13 +150,6 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
           <PauseBtn ref={pauseButtonEL} onClick={handleClickPause} />
         </div>
 
-        <img
-          src="src/assets/GameScreen/HintCircle.svg"
-          ref={hintCircleRef}
-          style={{
-            display: "none",
-          }}
-        />
         <PrestartModal
           onClosePrestartModal={onClosePrestartModal}
           isOpen={isOpenPrestartModal}
@@ -191,6 +159,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
           results={{ score: 123, amountCat: 5, timeLeft: "00:05" }}
           onClose={() => setIsOpenResults(false)}
         />
+        <HintCircle countHints={countHints} />
       </div>
     </Panel>
   );
