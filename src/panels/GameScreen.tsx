@@ -19,7 +19,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(30);
+  const [startSeconds, setStartSeconds] = useState(3000000);
   const [isOpenResults, setIsOpenResults] = useState(false);
 
   const handleClickHint = () => {
@@ -159,7 +159,11 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
           results={{ score: 123, amountCat: 5, timeLeft: "00:05" }}
           onClose={() => setIsOpenResults(false)}
         />
-        <HintCircle countHints={countHints} />
+        <HintCircle
+          countHints={countHints}
+          posHintCircleX={200}
+          posHintCircleY={200}
+        />
       </div>
     </Panel>
   );

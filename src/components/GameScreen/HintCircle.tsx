@@ -2,27 +2,29 @@ import { FC, useState, useRef, useEffect } from "react";
 
 export interface HintCircleProps {
   countHints: number;
+  posHintCircleX: number;
+  posHintCircleY: number;
 }
 
-export const HintCircle: React.FC<HintCircleProps> = ({ countHints }) => {
-  const stepSizeCircle = useRef<number>(80);
-  const [posHintCircleX, setPosHintCircleX] = useState<number>(220);
+export const HintCircle: React.FC<HintCircleProps> = ({
+  countHints,
+  posHintCircleX,
+  posHintCircleY,
+}) => {
+  const stepSizeCircle = useRef<number>(40);
+
   const [isFirstOpen, setIsFirstOpen] = useState<boolean>(true);
 
-  const [posHintCircleY, setPosHintCircleY] = useState<number>(230);
   const [radiusHintCircle, setRadiusHintCircle] = useState<number>(
     (countHints + 1) * stepSizeCircle.current,
   );
   const hintCircleRef = useRef<HTMLImageElement>(null);
 
   useEffect(() => {
-    if (!isFirstOpen && hintCircleRef.current) {
+    if (hintCircleRef.current && !isFirstOpen) {
       hintCircleRef.current.style.display = "block";
-    }
+      setRadiusHintCircle(countHints * stepSizeCircle.current);
 
-    setRadiusHintCircle(countHints * stepSizeCircle.current);
-
-    if (hintCircleRef.current) {
       const newX = posHintCircleX - radiusHintCircle;
       const newY = posHintCircleY - radiusHintCircle;
 
