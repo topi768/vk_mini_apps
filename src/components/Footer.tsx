@@ -17,7 +17,10 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
       <div className={className}>
         <footer className=" w-full flex align-center text-[10px] absolute bottom-4 left-0">
           <nav className="w-full h-full flex justify-between items-center">
-            <div className="relative  ">
+            <div
+              className="relative  "
+              onClick={() => routeNavigator.push("/СurrencyPurchase")}
+            >
               <IconBalance className="text-black w-8 h-8" />
               <p className="text-nowrap absolute left-1/2 -translate-x-1/2">
                 Кис-Кисы

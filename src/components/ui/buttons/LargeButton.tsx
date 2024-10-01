@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
+import IconWatch from "@/assets/icons/watch.svg";
 interface LargeButtonProps {
   text: string;
   onClick?: () => void;
@@ -7,6 +7,7 @@ interface LargeButtonProps {
   isPrimary?: boolean;
   color?: string;
   className?: string;
+  isWithWatchIcon?: boolean;
 }
 
 export const LargeButton: React.FC<LargeButtonProps> = ({
@@ -16,6 +17,7 @@ export const LargeButton: React.FC<LargeButtonProps> = ({
   isPrimary = true,
   color = "primary",
   className = "",
+  isWithWatchIcon = false,
 }) => {
   // Создаем реф для кнопки
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -56,6 +58,7 @@ export const LargeButton: React.FC<LargeButtonProps> = ({
         className={`inline-flex font-bold cursor-pointer justify-center items-center rounded-full w-4/5 px-3 py-2 ${bgColor()} ${className}`}
         disabled={isDisabled} // Делаем кнопку неактивной, если передан флаг isDisabled
       >
+        {isWithWatchIcon ? <IconWatch className="mr-2" /> : null}
         {text}
       </button>
     </div>

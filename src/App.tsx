@@ -7,6 +7,7 @@ import { GameScreen } from "./panels/GameScreen";
 import { Friends } from "./panels/Friends";
 import { Friend } from "./panels/Friend";
 import { ScoreList } from "./panels/ScoreList";
+import { СurrencyPurchase } from "./panels/СurrencyPurchase";
 
 import { DEFAULT_VIEW_PANELS } from "./routes";
 
@@ -49,6 +50,7 @@ export const App = () => {
           <Friend id="Friend" />
           <ScoreList id="ScoreList" />
           <Achievements id="Achievements" />
+          <СurrencyPurchase id="СurrencyPurchase" />
         </View>
         {/* </SplitCol> */}
       </SplitLayout>
