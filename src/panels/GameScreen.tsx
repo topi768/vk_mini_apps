@@ -1,5 +1,4 @@
 import { FC, useState, useRef } from "react";
-import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { TimerReverse } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
@@ -9,6 +8,13 @@ import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
 import { Results } from "../components/GameScreen/Results";
 import { HintCircle } from "../components/GameScreen/HintCircle";
+import {
+  Panel,
+  NavIdProps,
+  ModalRoot,
+  ModalPage,
+  SplitLayout,
+} from "@vkontakte/vkui";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -16,7 +22,7 @@ export interface OnboardingProps extends NavIdProps {
 
 export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [countHints, setCountHints] = useState(3);
-  const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
+  const [isOpenOnboarding, setIsOpenOnboarding] = useState(true);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
   const [startSeconds, setStartSeconds] = useState(3000000);
@@ -58,6 +64,8 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const handleHighlightChange = (highlighted: string) => {
     switch (highlighted) {
       case "timer":
+        setStartSeconds(30);
+
         if (timerEL.current && hintButtonEL.current && pauseButtonEL.current) {
           timerEL.current.style.zIndex = "0";
           hintButtonEL.current.style.zIndex = "0";
@@ -119,9 +127,19 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         break;
     }
   };
+  const ondoarding = (
+    <ModalRoot activeModal="ondoarding">
+      <ModalPage
+        className=" w-full h-full"
+        id="ondoarding"
+        hideCloseButton
+      ></ModalPage>
+    </ModalRoot>
+  );
 
   return (
     <Panel id={id} className=" h-full relative ">
+      <SplitLayout modal={isOpenOnboarding && ondoarding}></SplitLayout>
       <div>
         <Onboarding
           isOpen={isOpenOnboarding}

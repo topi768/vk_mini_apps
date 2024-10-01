@@ -72,7 +72,7 @@ export const Onboarding: React.FC<OnboardingProps> = ({
   if (isOpen) {
     return createPortal(
       <div
-        className={`"w-full h-full absolute left-0 top-0 px-6`}
+        className={`"w-full h-full absolute left-0 top-0 px-6 `}
         style={{ top: dialogs[currentDialog].coordY }}
       >
         <div className="flex ">
