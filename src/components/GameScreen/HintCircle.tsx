@@ -36,6 +36,7 @@ export const HintCircle: React.FC<HintCircleProps> = ({
     }
 
     setIsFirstOpen(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [countHints]);
 
   return (
