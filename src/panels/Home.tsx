@@ -76,7 +76,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
             <div className="w-full">
               <div
                 className="flex w-full items-center"
-                onClick={() => routeNavigator.push("/Friends")}
+                onClick={() => routeNavigator.push("/Achievements")}
               >
                 <IconSearch className="text-black mr-4 my-4  w-8 h-8" />
                 <p>Открыто достижений</p>

@@ -6,6 +6,7 @@ interface SmallButtonProps {
   isDisabled?: boolean;
   isPrimary?: boolean;
   color?: string;
+  className?: string;
 }
 
 export const SmallButton: React.FC<SmallButtonProps> = ({
@@ -14,6 +15,7 @@ export const SmallButton: React.FC<SmallButtonProps> = ({
   isDisabled = false,
   isPrimary = true,
   color = "primary",
+  className = "",
 }) => {
   const bgColor = () => {
     if (isPrimary) {
@@ -36,7 +38,7 @@ export const SmallButton: React.FC<SmallButtonProps> = ({
   return (
     <button
       onClick={onClick}
-      className={`inline-flex font-bold cursor-pointer justify-center items-center gap-2.5 pt-[0.1875rem] pb-[0.1875rem] px-4 rounded-full   leading-[1.375rem] ${bgColor()}`}
+      className={`inline-flex font-bold cursor-pointer justify-center items-center gap-2.5 pt-[0.1875rem] pb-[0.1875rem] px-4 rounded-full   leading-[1.375rem] ${bgColor()} ${className}`}
     >
       {text}
     </button>

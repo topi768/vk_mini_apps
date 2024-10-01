@@ -23,7 +23,10 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
                 Кис-Кисы
               </p>
             </div>
-            <div className="relative  ">
+            <div
+              className="relative  "
+              onClick={() => routeNavigator.push("/Achievements")}
+            >
               <IconAchievements className="text-black  w-8 h-8" />
               <p className="absolute left-1/2 -translate-x-1/2">Достижения</p>
             </div>

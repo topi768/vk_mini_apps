@@ -12,6 +12,7 @@ import { DEFAULT_VIEW_PANELS } from "./routes";
 
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Achievements } from "./panels/Achievements";
 
 export const App = () => {
   const { panel: activePanel = DEFAULT_VIEW_PANELS.HOME } =
@@ -47,6 +48,7 @@ export const App = () => {
           <Friends id="Friends" />
           <Friend id="Friend" />
           <ScoreList id="ScoreList" />
+          <Achievements id="Achievements" />
         </View>
         {/* </SplitCol> */}
       </SplitLayout>
