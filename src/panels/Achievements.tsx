@@ -2,13 +2,11 @@ import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
-import IconSearch from "@/assets/icons/search.svg";
-import IconAchievement from "@/assets/icons/achievements.svg";
-import { Avatar } from "../components/Avatar";
 import { SmallButton } from "../components/ui/buttons/SmallButton";
 import { ProgressBar } from "../components/ui/ProgressBar";
 import { FC, useState } from "react";
 import IconCheck from "@/assets/icons/check.svg";
+
 export interface AchievementsProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
