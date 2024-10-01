@@ -25,7 +25,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(true);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(3000000);
+  const [startSeconds, setStartSeconds] = useState(30);
   const [isOpenResults, setIsOpenResults] = useState(false);
 
   const handleClickHint = () => {
