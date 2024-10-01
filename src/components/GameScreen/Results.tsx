@@ -25,7 +25,6 @@ export const Results: React.FC<ResultsProps> = ({
   const rang = usePlayerStore((state) => state.rang);
 
   const routeNavigator = useRouteNavigator();
-  const score = usePlayerStore((state) => state.score);
 
   const onExit = () => {
     routeNavigator.push("/");
