@@ -1,4 +1,4 @@
-import { FC, useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export interface HintCircleProps {
   countHints: number;
