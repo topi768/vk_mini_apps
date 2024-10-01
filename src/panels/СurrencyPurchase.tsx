@@ -1,4 +1,4 @@
-import { FC, useState, useEffect } from "react";
+import { FC } from "react";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
@@ -6,6 +6,7 @@ import { Spacing } from "../components/ui/Spacing";
 import IconHint from "@/assets/icons/hint.svg";
 import { SmallButton } from "../components/ui/buttons/SmallButton";
 import { LargeButton } from "../components/ui/buttons/LargeButton";
+
 export interface СurrencyPurchaserops extends NavIdProps {
   fetchedUser?: UserInfo;
 }
