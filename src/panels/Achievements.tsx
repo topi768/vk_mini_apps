@@ -50,7 +50,7 @@ export const Achievements: FC<AchievementsProps> = ({ id }) => {
       buttonText: "",
       current: 5,
       max: 5,
-      id: 2,
+      id: 3,
     },
   ]);
 
@@ -60,7 +60,7 @@ export const Achievements: FC<AchievementsProps> = ({ id }) => {
         <Header text="Достижения" />
         <Spacing />
         {achievementsList.map((item) => (
-          <div className="w-full h-full py-7">
+          <div key={item.id} className="w-full h-full py-7">
             <div className="flex justify-between">
               <p className="text-[17px]">{item.name}</p>
               {item.isCompleted ? (

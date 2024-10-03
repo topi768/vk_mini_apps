@@ -11,7 +11,7 @@ export const HintCircle: React.FC<HintCircleProps> = ({
   pointCordX,
   pointCordY,
 }) => {
-  const [stepSizeCircle, setStepSizeCircle] = useState<number>(40);
+  const [stepSizeCircle] = useState<number>(40);
 
   const [radiusHintCircle, setRadiusHintCircle] = useState<number>(
     countHints * stepSizeCircle + stepSizeCircle,
@@ -44,7 +44,6 @@ export const HintCircle: React.FC<HintCircleProps> = ({
       <img
         src="src/assets/GameScreen/HintCircle.svg"
         style={{
-           
           display: isShowCircle ? "block" : "none",
           position: "absolute",
           top: posHintCircleY,
