@@ -2,58 +2,62 @@ import { useState, useRef, useEffect } from "react";
 
 export interface HintCircleProps {
   countHints: number;
-  posHintCircleX: number;
-  posHintCircleY: number;
+  pointCordX: number;
+  pointCordY: number;
 }
 
 export const HintCircle: React.FC<HintCircleProps> = ({
   countHints,
-  posHintCircleX,
-  posHintCircleY,
+  pointCordX,
+  pointCordY,
 }) => {
-  const stepSizeCircle = useRef<number>(40);
-
-  const [isFirstOpen, setIsFirstOpen] = useState<boolean>(true);
+  const [stepSizeCircle, setStepSizeCircle] = useState<number>(40);
 
   const [radiusHintCircle, setRadiusHintCircle] = useState<number>(
-    (countHints + 1) * stepSizeCircle.current,
+    countHints * stepSizeCircle + stepSizeCircle,
   );
-  const hintCircleRef = useRef<HTMLImageElement>(null);
+  const [posHintCircleX, setPosHintCircleX] = useState<number>(
+    pointCordX - radiusHintCircle,
+  );
 
+  const [posHintCircleY, setPosHintCircleY] = useState<number>(
+    pointCordY - radiusHintCircle,
+  );
+  const prevCountRef = useRef<number>(countHints);
+
+  const [isShowCircle, setIsShowCircle] = useState<boolean>(false);
   useEffect(() => {
-    if (hintCircleRef.current && !isFirstOpen) {
-      hintCircleRef.current.style.display = "block";
-      setRadiusHintCircle(countHints * stepSizeCircle.current);
-
-      const newX = posHintCircleX - radiusHintCircle;
-      const newY = posHintCircleY - radiusHintCircle;
-
-      hintCircleRef.current.style.top = `${newY}px`;
-      hintCircleRef.current.style.left = `${newX}px`;
-
-      hintCircleRef.current.style.width = `${radiusHintCircle * 2}px`;
-      hintCircleRef.current.style.height = `${radiusHintCircle * 2}px`;
+    if (countHints != prevCountRef.current) {
+      setIsShowCircle(true);
     }
 
-    setIsFirstOpen(false);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [countHints]);
+    setRadiusHintCircle(countHints * stepSizeCircle + stepSizeCircle);
+
+    setPosHintCircleX(pointCordX - radiusHintCircle);
+    setPosHintCircleY(pointCordY - radiusHintCircle);
+
+    prevCountRef.current = countHints;
+  }, [countHints, pointCordX, pointCordY, radiusHintCircle, stepSizeCircle]);
 
   return (
     <>
       <img
         src="src/assets/GameScreen/HintCircle.svg"
-        ref={hintCircleRef}
         style={{
-          display: "none",
+          // eslint-disable-next-line no-constant-condition
+          display: isShowCircle ? "block" : "none",
           position: "absolute",
+          top: posHintCircleY,
+          left: posHintCircleX,
+          width: radiusHintCircle * 2 + "px",
+          height: radiusHintCircle * 2 + "px",
         }}
       />
       {/* центер */}
       {/* <div
         className="bg-red-900 w-1 h-1 absolute translate-x-0 "
         style={{
-          transform: `translate(${posHintCircleX}px, ${posHintCircleY}px)`,
+          transform: `translate(${pointCordX}px, ${pointCordY}px)`,
         }}
       ></div> */}
     </>
