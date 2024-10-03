@@ -44,7 +44,7 @@ export const HintCircle: React.FC<HintCircleProps> = ({
       <img
         src="src/assets/GameScreen/HintCircle.svg"
         style={{
-          // eslint-disable-next-line no-constant-condition
+           
           display: isShowCircle ? "block" : "none",
           position: "absolute",
           top: posHintCircleY,

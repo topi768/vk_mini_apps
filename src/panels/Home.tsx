@@ -48,7 +48,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 className="flex w-full items-center"
                 onClick={() => routeNavigator.push("/Friends")}
               >
-                <IconScore className="text-black mr-4 my-4  w-8 h-8" />
+                <IconScore className="text-black mr-4 my-2  w-8 h-8" />
                 <p>Счет</p>
                 <p className="ml-auto">{"2 005 568"}</p>
               </div>
@@ -58,7 +58,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 className="flex w-full items-center"
                 onClick={() => routeNavigator.push("/Friends")}
               >
-                <IconTop className="text-black mr-4 my-4  w-8 h-8" />
+                <IconTop className="text-black mr-4 my-2  w-8 h-8" />
                 <p>Место в рейтинге</p>
                 <p className="ml-auto">{25}</p>
               </div>
@@ -68,7 +68,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 className="flex w-full items-center"
                 onClick={() => routeNavigator.push("/Friends")}
               >
-                <IconScore className="text-black mr-4 my-4  w-8 h-8" />
+                <IconScore className="text-black mr-4 my-2  w-8 h-8" />
                 <p>Найдено котиков</p>
                 <p className="ml-auto">{256}</p>
               </div>
@@ -78,7 +78,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                 className="flex w-full items-center"
                 onClick={() => routeNavigator.push("/Achievements")}
               >
-                <IconSearch className="text-black mr-4 my-4  w-8 h-8" />
+                <IconSearch className="text-black mr-4 my-2  w-8 h-8" />
                 <p>Открыто достижений</p>
                 <p className="ml-auto">{5}</p>
               </div>
