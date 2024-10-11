@@ -24,9 +24,9 @@ export const App = () => {
   );
 
   useEffect(() => {
-    if (activePanel == DEFAULT_VIEW_PANELS.HOME) {
-      console.log(activePanel);
-    }
+    // if (activePanel == DEFAULT_VIEW_PANELS.HOME) {
+    //   console.log("");
+    // }
 
     async function fetchData() {
       const user = await bridge.send("VKWebAppGetUserInfo");
@@ -40,20 +40,21 @@ export const App = () => {
 
   return (
     <>
-      <SplitLayout className="">
-        <QueryClientProvider client={queryClient}></QueryClientProvider>
-        {/* <SplitCol> */}
-        <View activePanel={activePanel}>
-          <Home id="home" />
-          <GameScreen id="GameScreen" />
-          <Friends id="Friends" />
-          <Friend id="Friend" />
-          <ScoreList id="ScoreList" />
-          <Achievements id="Achievements" />
-          <СurrencyPurchase id="СurrencyPurchase" />
-        </View>
-        {/* </SplitCol> */}
-      </SplitLayout>
+      <QueryClientProvider client={queryClient}>
+        <SplitLayout className="">
+          {/* <SplitCol> */}
+          <View activePanel={activePanel}>
+            <Home id="home" />
+            <GameScreen id="GameScreen" />
+            <Friends id="Friends" />
+            <Friend id="Friend" />
+            <ScoreList id="ScoreList" />
+            <Achievements id="Achievements" />
+            <СurrencyPurchase id="СurrencyPurchase" />
+          </View>
+          {/* </SplitCol> */}
+        </SplitLayout>
+      </QueryClientProvider>
     </>
   );
 };

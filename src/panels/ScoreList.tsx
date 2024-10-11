@@ -4,6 +4,10 @@ import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
+import { useGetRatingTop5 } from "../hooks/useGetTop5";
+import { Avatar } from "../components/Avatar";
+import { RatingTop5Item } from "../api/types";
+import { Footer } from "../components/Footer";
 
 export interface ScoreListProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -16,49 +20,44 @@ export const ScoreList: FC<ScoreListProps> = ({ id }) => {
     rank: string;
     score: number;
   }
-  const [friendsList] = useState<Friend[]>([
-    {
-      name: "Владимир Котов",
-      avatar: "src/assets/base/avatar.svg",
-      rank: "Сержант Кискисенко",
-      score: 245658213,
-    },
-    {
-      name: "Владимир Котов",
-      avatar: "src/assets/base/avatar.svg",
-      rank: "Сержант Кискисенко",
-      score: 197357618,
-    },
-    {
-      name: "Владимир Котов",
-      avatar: "src/assets/base/avatar.svg",
-      rank: "Сержант Кискисенко",
-      score: 206121003,
-    },
-  ]);
+  const [topList, setTopList] = useState<Friend[]>([]);
+  const { data, isLoading, error } = useGetRatingTop5();
+
+  useEffect(() => {
+    if (data && !isLoading && !error) {
+      const players: Friend[] = data.map((player: RatingTop5Item) => ({
+        name: player.name,
+        avatar: player.avatar,
+        rank: "Сержант Кискисенко",
+        score: player.score,
+      }));
+
+      setTopList(players);
+    }
+  }, [data, isLoading, error]);
 
   function formatScore(score: number) {
     return score.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   const [sortedFriendsList, setSortedFriendsList] = useState<Friend[]>([]);
   useEffect(() => {
-    if (friendsList.length > 0) {
-      const sortedList = friendsList.sort((a, b) => b.score - a.score);
+    if (topList.length > 0) {
+      const sortedList = topList.sort((a, b) => b.score - a.score);
       setSortedFriendsList(sortedList);
     }
-  }, [friendsList]);
+  }, [topList]);
 
   return (
     <Panel id={id} className="w-full h-full ">
       <div className="w-full h-full px-6">
-        <Header text="Друзья" />
+        <Header text="Топ 5 искателей" />
         <Spacing />
-        <div className="p-6">
+        <div className="">
           {sortedFriendsList.length > 0 ? (
             sortedFriendsList.map((friend, index) => (
               <div key={index} className="">
                 <div className="flex relative my-3 ">
-                  <img className="mr-2" src={friend.avatar} alt="" />
+                  <Avatar className="mr-6" srcImage={friend.avatar} />{" "}
                   <div className="h-full flex flex-col  gap-2">
                     <h3 className=" text-[1.0625rem] mt-3 font-bold leading-[1.375rem]">
                       {friend.name}
@@ -88,6 +87,7 @@ export const ScoreList: FC<ScoreListProps> = ({ id }) => {
           )}
         </div>
       </div>
+      <Footer />
     </Panel>
   );
 };

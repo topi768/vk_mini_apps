@@ -1,5 +1,5 @@
 import { create } from "zustand";
-
+import { getUserData } from "./api/user";
 type Player = {
   incrementScore(score: number): unknown;
   name: string;
@@ -9,6 +9,10 @@ type Player = {
   amountCat: number;
   incrementAmountCat(amount: number): unknown;
 };
+
+// getUserData().then((data) => {
+//   console.log(data);
+// });
 
 export const usePlayerStore = create<Player>((set) => ({
   name: "",

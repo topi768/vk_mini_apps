@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
@@ -9,7 +9,6 @@ import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
 import { ListItem } from "../components/ui/ListItem";
-
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
