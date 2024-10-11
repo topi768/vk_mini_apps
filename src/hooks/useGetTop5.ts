@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import { getRatingTop5 } from "../api/rating";
-import { RatingTop5Response } from "../api/types";
 
 export const useGetRatingTop5 = () => {
   return useQuery({

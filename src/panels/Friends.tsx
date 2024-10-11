@@ -7,6 +7,7 @@ import MediumButton from "../components/ui/buttons/MediumButton";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
 import { Footer } from "../components/Footer";
+
 export interface FriendsProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
