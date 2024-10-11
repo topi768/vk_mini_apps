@@ -6,6 +6,7 @@ import { Spacing } from "../components/ui/Spacing";
 import MediumButton from "../components/ui/buttons/MediumButton";
 import ChevronRight from "@/assets/icons/chevronRight.svg";
 import { useRouteNavigator } from "@vkontakte/vk-mini-apps-router";
+import { Footer } from "../components/Footer";
 
 export interface FriendsProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -87,6 +88,7 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
           )}
         </div>
       </div>
+      <Footer />
     </Panel>
   );
 };

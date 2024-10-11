@@ -6,6 +6,7 @@ import { SmallButton } from "../components/ui/buttons/SmallButton";
 import { ProgressBar } from "../components/ui/ProgressBar";
 import { FC, useState } from "react";
 import IconCheck from "@/assets/icons/check.svg";
+import { Footer } from "../components/Footer";
 
 export interface AchievementsProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -80,6 +81,7 @@ export const Achievements: FC<AchievementsProps> = ({ id }) => {
           </div>
         ))}
       </div>
+      <Footer />
     </Panel>
   );
 };

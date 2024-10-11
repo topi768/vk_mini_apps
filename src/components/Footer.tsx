@@ -14,43 +14,43 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
 
   return (
     <>
-      <div className={className}>
-        <footer className=" w-full flex align-center text-[10px] absolute bottom-4 left-0">
-          <nav className="w-full h-full flex justify-between items-center">
-            <div
-              className="relative  "
-              onClick={() => routeNavigator.push("/СurrencyPurchase")}
-            >
-              <IconBalance className="text-black w-8 h-8" />
-              <p className="text-nowrap absolute left-1/2 -translate-x-1/2">
-                Кис-Кисы
-              </p>
-            </div>
-            <div
-              className="relative  "
-              onClick={() => routeNavigator.push("/Achievements")}
-            >
-              <IconAchievements className="text-black  w-8 h-8" />
-              <p className="absolute left-1/2 -translate-x-1/2">Достижения</p>
-            </div>
-            <Avatar />
-            <div
-              className="relative  "
-              onClick={() => routeNavigator.push("/Friends")}
-            >
-              <IconFriends className="text-blackw-8 h-8" />
-              <p className="absolute left-1/2 -translate-x-1/2">Друзья</p>
-            </div>
-            <div
-              className="relative  "
-              onClick={() => routeNavigator.push("/ScoreList")}
-            >
-              <IconTop className="text-black w-8 h-8" />
-              <p className="absolute left-1/2 -translate-x-1/2">Топ</p>
-            </div>
-          </nav>
-        </footer>
-      </div>
+      <footer
+        className={`px-6 w-full flex align-center text-[10px] absolute bottom-4 left-0 ${className}`}
+      >
+        <nav className="w-full h-full flex justify-between items-center">
+          <div
+            className="relative  "
+            onClick={() => routeNavigator.push("/СurrencyPurchase")}
+          >
+            <IconBalance className="text-black w-8 h-8" />
+            <p className="text-nowrap absolute left-1/2 -translate-x-1/2">
+              Кис-Кисы
+            </p>
+          </div>
+          <div
+            className="relative  "
+            onClick={() => routeNavigator.push("/Achievements")}
+          >
+            <IconAchievements className="text-black  w-8 h-8" />
+            <p className="absolute left-1/2 -translate-x-1/2">Достижения</p>
+          </div>
+          <Avatar />
+          <div
+            className="relative  "
+            onClick={() => routeNavigator.push("/Friends")}
+          >
+            <IconFriends className="text-blackw-8 h-8" />
+            <p className="absolute left-1/2 -translate-x-1/2">Друзья</p>
+          </div>
+          <div
+            className="relative  "
+            onClick={() => routeNavigator.push("/ScoreList")}
+          >
+            <IconTop className="text-black w-8 h-8" />
+            <p className="absolute left-1/2 -translate-x-1/2">Топ</p>
+          </div>
+        </nav>
+      </footer>
     </>
   );
 };

@@ -6,6 +6,7 @@ import { Spacing } from "../components/ui/Spacing";
 import IconHint from "@/assets/icons/hint.svg";
 import { SmallButton } from "../components/ui/buttons/SmallButton";
 import { LargeButton } from "../components/ui/buttons/LargeButton";
+import { Footer } from "../components/Footer";
 
 export interface СurrencyPurchaserops extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -44,6 +45,7 @@ export const СurrencyPurchase: FC<СurrencyPurchaserops> = ({ id }) => {
           isWithWatchIcon={true}
           className="mt-4"
         />
+        <Footer />
       </div>
     </Panel>
   );

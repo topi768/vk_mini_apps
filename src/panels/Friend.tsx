@@ -5,6 +5,7 @@ import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
 import { Avatar } from "../components/Avatar";
 import { ListItem } from "../components/ui/ListItem";
+import { Footer } from "../components/Footer";
 
 export interface FriendProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -69,6 +70,8 @@ export const Friend: FC<FriendProps> = ({ id }) => {
           ))}
         </div>
       </div>
+
+      <Footer />
     </Panel>
   );
 };
