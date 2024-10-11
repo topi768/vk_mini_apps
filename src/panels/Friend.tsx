@@ -6,17 +6,45 @@ import { Spacing } from "../components/ui/Spacing";
 import IconSearch from "@/assets/icons/search.svg";
 import IconAchievement from "@/assets/icons/achievements.svg";
 import { Avatar } from "../components/Avatar";
+import { ListItem } from "../components/ui/ListItem";
 
 export interface FriendProps extends NavIdProps {
   fetchedUser?: UserInfo;
 }
+
+const rankingData = [
+  {
+    iconName: "score",
+    route: "",
+    text: "Счет",
+    value: "2 205 568",
+  },
+  {
+    iconName: "top",
+    route: "",
+    text: "Место в рейтинге",
+    value: "56",
+  },
+  {
+    iconName: "search",
+    route: "",
+    text: "Найдено котиков",
+    value: "256",
+  },
+  {
+    iconName: "achievements",
+    route: "",
+    text: "Открыто достижений",
+    value: "5",
+  },
+];
 
 export const Friend: FC<FriendProps> = ({ id }) => {
   return (
     <Panel id={id} className="w-full h-fullx">
       <div className="w-full h-full">
         <div className="px-6">
-          <Header text="Друзья" />
+          <Header text="Друзья в игре" />
           <Spacing />
           <div className="">
             <div className="flex relative my-7 ">
@@ -32,16 +60,15 @@ export const Friend: FC<FriendProps> = ({ id }) => {
             </div>
           </div>
           <Spacing />
-          <div className="flex m-3 items-center">
-            <IconSearch />
-            <p className="ml-3">Найдено котиков</p>
-            <span className="ml-auto">{256}</span>
-          </div>
-          <div className="flex m-3 items-center">
-            <IconAchievement />
-            <p className="ml-3">Найдено котиков</p>
-            <span className="ml-auto">{5}</span>
-          </div>
+          {rankingData.map(({ iconName, route, text, value }) => (
+            <ListItem
+              key={text}
+              iconName={iconName}
+              route={route}
+              text={text}
+              value={value}
+            />
+          ))}
         </div>
       </div>
     </Panel>

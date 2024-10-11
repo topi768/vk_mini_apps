@@ -48,7 +48,7 @@ export const Friends: FC<FriendsProps> = ({ id }) => {
     <Panel id={id} className="w-full h-full ">
       <div className="w-full h-full ">
         <div className="px-6">
-          <Header text="Друзья" />
+          <Header text="Друзья в игре" />
           <Spacing />
           {friendsList.length > 0 ? (
             friendsList.map((friend, index) => (
