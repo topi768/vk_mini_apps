@@ -12,9 +12,26 @@ export interface AdminPanelProps extends NavIdProps {
 export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileId, setFileId] = useState<string>();
-  const { data } = useGetAchiement();
-  const { mutate: uploadFile, isPending } = useFileUpload();
-  const { mutate: deleteFile, error } = useFileDelete();
+
+  const {
+    data: achievementData,
+    isPending: isAchievementPending,
+    error: achievementError,
+  } = useGetAchiement();
+
+  const {
+    mutate: uploadFile,
+    isPending: isUploadPending,
+    error: uploadError,
+    data: uploadData,
+  } = useFileUpload();
+
+  const {
+    mutate: deleteFile,
+    isPending: isDeletePending,
+    error: deleteError,
+    data: deleteData,
+  } = useFileDelete();
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -36,7 +53,7 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
 
   return (
     <Panel id={id}>
-      <h2 className="text-center text-2xl">Admin File storage</h2>
+      <h2 className="text-center text-2xl">Admin File Storage</h2>
       <div className="border-2 border-black p-4">
         <h3>Upload img</h3>
         <input
@@ -44,38 +61,45 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
           type="file"
           onChange={handleFileChange}
         />
-        <button onClick={handleUpload} disabled={isPending}>
+        <button onClick={handleUpload} disabled={isUploadPending}>
           Upload
         </button>
-        {isPending && <p>Uploading...</p>}
-        {error && <p>Error uploading img: {error.message}</p>}
-        {data && (
+        {isUploadPending && <p>Uploading...</p>}
+        {uploadError && <p>Error uploading img: {uploadError.message}</p>}
+        {uploadData && (
           <div>
             <p>Upload successful!</p>
-            <p>img URL: {data.url}</p>
-            <p>img ID: {data.id}</p>
+            <p>img URL: {uploadData.url}</p>
+            <p>img ID: {uploadData.id}</p>
           </div>
         )}
       </div>
       <div className="border-2 border-black p-4">
-        <h3>Delete File by id</h3>
+        <h3>Delete File by ID</h3>
         <div>
           <input
             type="text"
             placeholder="Enter file ID"
             onChange={(e) => setFileId(e.target.value)}
           />
-          <button onClick={handleDelete}>Delete File</button>
-          {error && <p>Error deleting file: {error.message}</p>}
-          {data && <p>File deleted successfully!</p>}
+          <button onClick={handleDelete} disabled={isDeletePending}>
+            Delete File
+          </button>
+          {isDeletePending && <p>Deleting...</p>}
+          {deleteError && <p>Error deleting file: {deleteError.message}</p>}
+          {deleteData && <p>File deleted successfully!</p>}
         </div>
       </div>
 
-      <h2 className="text-center text-2xl">Admin Achievement Api</h2>
+      <h2 className="text-center text-2xl">Admin Achievement API</h2>
 
       <div className="border-2 border-black p-4">
         <h3>Achievement</h3>
-        {data}
+        {isAchievementPending && <p>Loading achievement...</p>}
+        {achievementError && (
+          <p>Error loading achievement: {achievementError.message}</p>
+        )}
+        {achievementData && <div>{achievementData}</div>}
       </div>
     </Panel>
   );
