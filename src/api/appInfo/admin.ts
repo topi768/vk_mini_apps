@@ -18,3 +18,9 @@ export const uploadFile = async (file: File): Promise<string> => {
 
   return response.data.token;
 };
+
+export const getAchievementFetcher = async () => {
+  const response = await instance.get(apiUrls.admin.achievements.get);
+
+  return response.data;
+};

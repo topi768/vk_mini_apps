@@ -5,7 +5,6 @@ export const instance = axios.create({
   timeout: 3000,
   headers: {
     authorization: `Bearer ${window.location.search?.replace("?", "") || ""}`,
-    vk_user_id: "457776760", // ???
   },
 });
 
