@@ -9,6 +9,7 @@ import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
 import { ListItem } from "../components/ui/ListItem";
+import { useGetUserData } from "../hooks/useGetUser";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;

@@ -4,13 +4,14 @@ import { fileUpload } from "../api/admin/fileStorage";
 export const useFileUpload = () => {
   return useMutation({
     mutationFn: async (file: File | null) => {
+      console.log(file);
+
       if (!file) {
         throw new Error("No file provided");
       }
 
       try {
         const result = await fileUpload(file);
-        console.log(await result);
 
         return result;
       } catch (error) {
