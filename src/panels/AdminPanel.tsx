@@ -12,7 +12,7 @@ export interface AdminPanelProps extends NavIdProps {
 export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [fileId, setFileId] = useState<string>();
-  const { data, isLoading } = useGetAchiement();
+  const { data } = useGetAchiement();
   const { mutate: uploadFile, isPending } = useFileUpload();
   const { mutate: deleteFile, error } = useFileDelete();
 
