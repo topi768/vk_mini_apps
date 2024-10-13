@@ -5,15 +5,22 @@ export const instance = axios.create({
   timeout: 3000,
   headers: {
     authorization: `Bearer ${window.location.search?.replace("?", "") || ""}`,
+    vk_user_id: "457776760", // ???
   },
 });
 
 export const apiUrls = {
   admin: {
-    login: "/admin/api/auth/login", //post
+    fileStorage: {
+      upload: "/admin/api/filestorage/upload", //post
+      delete: "/admin/api/filestorage/file", //delete
+    },
+    achievements: {
+      get: "/admin/api/achievement", //get
+    },
   },
   user: {
-    data: "/api/findcat/rating/top5", //get
+    data: "/api/findcat/user", //get
   },
   rating: {
     top5: "/api/findcat/rating/top5", //get

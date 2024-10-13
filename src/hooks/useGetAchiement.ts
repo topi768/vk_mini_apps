@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getRatingTop5 } from "../api/appInfo/rating";
+import { getAchiement } from "../api/admin/achievement";
 
-export const useGetRatingTop5 = () => {
+export const useGetAchiement = () => {
   return useQuery({
-    queryKey: ["rating-top5"],
-    queryFn: async () => await getRatingTop5(),
+    queryKey: ["useGetAchiement"],
+    queryFn: async () => await getAchiement(),
     retry: 3,
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,

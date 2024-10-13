@@ -1,4 +1,4 @@
-import { apiUrls, instance } from "./instance";
+import { apiUrls, instance } from "../instance";
 
 export const getUserData = async () => {
   const response = await instance.get(apiUrls.user.data);

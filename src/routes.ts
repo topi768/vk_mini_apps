@@ -18,6 +18,7 @@ export const DEFAULT_VIEW_PANELS = {
   SCORELIST: "ScoreList",
   ACHIEVEMENTS: "Achievements",
   CURRENCYPURCHASE: "СurrencyPurchase",
+  ADMIN: "admin",
 } as const;
 
 const PARAMETER_ROUTE = "/friend/:id";
@@ -49,6 +50,11 @@ export const routes = RoutesConfig.create([
       createPanel(
         DEFAULT_VIEW_PANELS.CURRENCYPURCHASE,
         `/${DEFAULT_VIEW_PANELS.CURRENCYPURCHASE}`,
+        [],
+      ),
+      createPanel(
+        DEFAULT_VIEW_PANELS.ADMIN,
+        `/${DEFAULT_VIEW_PANELS.ADMIN}`,
         [],
       ),
       createPanel(DEFAULT_VIEW_PANELS.FRIEND, PARAMETER_ROUTE, []),
