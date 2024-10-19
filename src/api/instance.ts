@@ -17,14 +17,16 @@ export const apiUrls = {
     achievements: {
       get: "/admin/api/achievement", //get
     },
+    game: {
+      lvl: "/admin/api/game-lvl", //post
+
+      lvls: "/api/findcat/game/lvls", //get
+    },
   },
   user: {
     data: "/api/findcat/user", //get
   },
   rating: {
     top5: "/api/findcat/rating/top5", //get
-  },
-  game: {
-    lvls: "/api/findcat/game/lvls", //get
   },
 } as const;
