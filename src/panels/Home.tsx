@@ -19,33 +19,32 @@ export interface HomeProps extends NavIdProps {
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { userResponse } = useUser();
-  const { achievement } = useAdmin();
-  console.log({ userResponse, achievement });
+  console.log(userResponse);
 
   const rankingData = [
     {
       iconName: "score",
       route: "",
       text: "Счет",
-      value: "2 005 568",
+      value: userResponse.score,
     },
     {
       iconName: "top",
       route: "",
       text: "Место в рейтинге",
-      value: "25",
+      value: userResponse.userPosition,
     },
     {
       iconName: "score",
       route: "",
       text: "Найдено котиков",
-      value: "256",
+      value: userResponse.catsFoundCount,
     },
     {
       iconName: "achievements",
       route: "",
       text: "Открыто достижений",
-      value: "5",
+      value: userResponse.achievementsCount,
     },
   ];
 
@@ -59,7 +58,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
             <Spacing />
             <div>
               <div className="flex relative my-7 ">
-                <Avatar className="mr-6" />
+                <Avatar className="mr-6" typeRank={userResponse.rank} />
                 <div className="h-full flex flex-col gap-2">
                   <h3 className="text-[1.0625rem] mt-3 font-bold leading-[1.375rem]">
                     {"Владимир Котов"}
