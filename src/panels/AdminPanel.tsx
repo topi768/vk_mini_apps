@@ -18,7 +18,7 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
   const [fileName, setFileName] = useState<string>();
   const [lvl, setLvl] = useState<number>(0);
   const [duration, setDuration] = useState<number>(0);
-  const [countCatOnLvl, setCountCatOnLvl] = useState<number>(5);
+  const [countCatOnLvl] = useState<number>(5);
   const [crop, setCrop] = useState<Crop>();
   const [numberGameLvlCat, setNumberGameLvlCat] = useState(1);
   const [GameLvlCatsList, setGameLvlCatsList] = useState<GameLvlCatItem[]>([]);

@@ -10,7 +10,6 @@ import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
 import { ListItem } from "../components/ui/ListItem";
 import { useUser } from "../hooks/useUser.ts";
-import { useAdmin } from "../hooks/useAdmin.ts";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;

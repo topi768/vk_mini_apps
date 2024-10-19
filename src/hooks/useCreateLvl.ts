@@ -33,7 +33,7 @@ export const useCreateLvl = () => {
     onSuccess: (data, variables) => {
       console.log(`Successfully created/updated game level ${variables.lvl}!`);
     },
-    onError: (error, variables, context) => {
+    onError: (error, variables) => {
       console.error(
         `Failed to create/update game level ${variables.lvl}:`,
         error,
