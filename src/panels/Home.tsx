@@ -9,7 +9,8 @@ import { Avatar } from "../components/Avatar";
 import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
 import { ListItem } from "../components/ui/ListItem";
-import { useGetUserData } from "../hooks/useGetUser";
+import { useUser } from "../hooks/useUser.ts";
+import { useAdmin } from "../hooks/useAdmin.ts";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -17,6 +18,9 @@ export interface HomeProps extends NavIdProps {
 
 export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
+  const { userResponse } = useUser();
+  const { achievement } = useAdmin();
+  console.log({ userResponse, achievement });
 
   const rankingData = [
     {

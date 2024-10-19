@@ -47,7 +47,7 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
 
   const handleDelete = () => {
     if (fileId) {
-      deleteFile(fileId);
+      deleteFile("findcat/cat-8c4868b2-43da-4cb3-b5b0-f0183a24d552.jpg    ");
     }
   };
 

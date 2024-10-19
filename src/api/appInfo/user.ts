@@ -1,6 +1,6 @@
 import { apiUrls, instance } from "../instance";
 
-export const getUserData = async () => {
+export const getUserFetcher = async () => {
   const response = await instance.get(apiUrls.user.data);
   console.log(response.data);
 
