@@ -19,13 +19,15 @@ export const apiUrls = {
     },
     game: {
       lvl: "/admin/api/game-lvl", //post, get, put, delete
-
-      lvls: "/api/findcat/game/lvls", //get
     },
   },
-  user: {
-    data: "/api/findcat/user", //get
+  appInfo: {
+    user: "/api/findcat/user", //get
   },
+  game: {
+    lvls: "/api/findcat/game/lvls", //get
+  },
+
   rating: {
     top5: "/api/findcat/rating/top5", //get
   },

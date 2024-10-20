@@ -8,6 +8,7 @@ import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
 import { Results } from "../components/GameScreen/Results";
 import { HintCircle } from "../components/GameScreen/HintCircle";
+import { useGetLvls } from "../hooks/useGetLvls";
 import {
   Panel,
   NavIdProps,
@@ -27,6 +28,9 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
   const [startSeconds, setStartSeconds] = useState(30000);
   const [isOpenResults, setIsOpenResults] = useState(false);
+
+  const { data } = useGetLvls();
+  console.log(data);
 
   const handleClickHint = () => {
     if (countHints >= 1) {

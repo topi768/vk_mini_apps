@@ -25,25 +25,25 @@ export const Home: FC<HomeProps> = ({ id }) => {
       iconName: "score",
       route: "",
       text: "Счет",
-      value: userResponse.score,
+      value: userResponse?.score,
     },
     {
       iconName: "top",
       route: "",
       text: "Место в рейтинге",
-      value: userResponse.userPosition,
+      value: userResponse?.userPosition,
     },
     {
       iconName: "score",
       route: "",
       text: "Найдено котиков",
-      value: userResponse.catsFoundCount,
+      value: userResponse?.catsFoundCount,
     },
     {
       iconName: "achievements",
       route: "",
       text: "Открыто достижений",
-      value: userResponse.achievementsCount,
+      value: userResponse?.achievementsCount,
     },
   ];
 
@@ -57,7 +57,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
             <Spacing />
             <div>
               <div className="flex relative my-7 ">
-                <Avatar className="mr-6" typeRank={userResponse.rank} />
+                <Avatar className="mr-6" typeRank={userResponse?.rank} />
                 <div className="h-full flex flex-col gap-2">
                   <h3 className="text-[1.0625rem] mt-3 font-bold leading-[1.375rem]">
                     {"Владимир Котов"}
