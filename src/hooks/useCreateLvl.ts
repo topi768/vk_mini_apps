@@ -15,8 +15,6 @@ export const useCreateLvl = () => {
         height: number;
       }>;
     }) => {
-      console.log("created lvl ", gameLevelData);
-
       try {
         const result = await createLvl(
           gameLevelData.lvl,
