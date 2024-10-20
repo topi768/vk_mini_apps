@@ -1,6 +1,6 @@
 import { FC, useState, useRef } from "react";
 import { UserInfo } from "@vkontakte/vk-bridge";
-import { TimerReverse } from "../components/GameScreen/GameTimer";
+import { GameTimer } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
 import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
@@ -26,7 +26,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(30000);
+  const [startSeconds, setStartSeconds] = useState(300);
   const [isOpenResults, setIsOpenResults] = useState(false);
 
   const { data } = useGetLvls();
@@ -154,7 +154,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
           onClose={handleClosePauseModel}
           isOpen={isOpenPausetModal}
         />
-        <TimerReverse
+        <GameTimer
           className="absolute top-9 left-1/2 -translate-x-1/2   translate-y-5"
           isPause={isPause || isOpenOnboarding}
           startTime={startSeconds}

@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef } from "react";
 import IconTimer from "@/assets/icons/timer.svg";
+import { TimerReverse } from "../TimerReverse";
 
 interface TimerProps {
   isPause: boolean;
@@ -8,7 +9,7 @@ interface TimerProps {
   className?: string;
 }
 
-export const TimerReverse = forwardRef<HTMLDivElement, TimerProps>(
+export const GameTimer = forwardRef<HTMLDivElement, TimerProps>(
   ({ isPause, startTime, onEnd, className = "" }, ref) => {
     const [secondsRemaining, setSecondsRemaining] = useState(startTime);
 
@@ -49,10 +50,12 @@ export const TimerReverse = forwardRef<HTMLDivElement, TimerProps>(
         >
           <IconTimer />
           <div className="__label text-white font-['NauryzRedKeds'] text-2xl font-bold leading-[100%]">
-            00:
-            {secondsRemaining.toString().length > 1
-              ? secondsRemaining
-              : `0${secondsRemaining}`}
+            <TimerReverse
+              isPause={isPause}
+              startTime={secondsRemaining}
+              onEnd={onEnd}
+              isLeadingZeros={false}
+            />
           </div>
         </div>
       </div>

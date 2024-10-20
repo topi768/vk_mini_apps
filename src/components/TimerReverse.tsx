@@ -5,6 +5,7 @@ interface TimerProps {
   startTime: number;
   onEnd: () => void;
   className?: string;
+  isLeadingZeros?: boolean;
 }
 
 export const TimerReverse: React.FC<TimerProps> = ({
@@ -12,6 +13,7 @@ export const TimerReverse: React.FC<TimerProps> = ({
   startTime,
   onEnd,
   className = "",
+  isLeadingZeros = true,
 }) => {
   // const [isPause, setIsPause]= useState(false);
 
@@ -48,7 +50,19 @@ export const TimerReverse: React.FC<TimerProps> = ({
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
     const secondsLeft = seconds % 60;
-    const formatedTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
+    let formatedTime;
+
+    if (isLeadingZeros) {
+      formatedTime = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secondsLeft.toString().padStart(2, "0")}`;
+    } else {
+      if (hours > 0) {
+        formatedTime = `${hours}:${minutes.toString().padStart(2, "0")}}:${secondsLeft.toString().padStart(2, "0")}`;
+      } else if (minutes > 0) {
+        formatedTime = `${minutes}:${secondsLeft.toString().padStart(2, "0")}`;
+      } else {
+        formatedTime = `${secondsLeft}`;
+      }
+    }
 
     return formatedTime;
   };
