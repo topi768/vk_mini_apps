@@ -2,7 +2,9 @@ import { useState } from "react";
 import ReactCrop, { type Crop } from "react-image-crop";
 import "react-image-crop/dist/ReactCrop.css";
 import { useCreateLvl } from "../../hooks/useCreateLvl";
-
+import { useGetLvls } from "../../hooks/useGetLvls";
+import { useGetLvlById } from "../../hooks/useGetLvlById";
+import { useDeleteLvlById } from "../../hooks/useDeleteLvlById";
 interface GameLvlApiProps {
   className?: string;
   uploadData: {
@@ -16,11 +18,17 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
   uploadData,
 }) => {
   const [lvl, setLvl] = useState<number>(0);
+  const [lvlId, setLvlId] = useState<number>(1);
   const [duration, setDuration] = useState<number>(0);
   const [countCatOnLvl] = useState<number>(5);
   const [crop, setCrop] = useState<Crop>();
   const [numberGameLvlCat, setNumberGameLvlCat] = useState(1);
   const [GameLvlCatsList, setGameLvlCatsList] = useState<GameLvlCatItem[]>([]);
+
+  const { data } = useGetLvls();
+  const { data: lvlB, refetch: refetchLvlById } = useGetLvlById(lvlId);
+  const { mutate: deleteLvlById } = useDeleteLvlById();
+
   type GameLvlCatItem = {
     fileId: number;
     unit: string;
@@ -32,7 +40,6 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
 
   const onCreateGameLvlCat = () => {
     setNumberGameLvlCat(numberGameLvlCat + 1);
-    console.log(crop);
 
     setGameLvlCatsList([
       ...GameLvlCatsList,
@@ -45,7 +52,15 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
         height: crop?.height || 0,
       },
     ]);
+
+    if (crop) {
+      crop.x = 0;
+      crop.y = 0;
+      crop.width = 0;
+      crop.height = 0;
+    }
   };
+
   const { mutate: createLvl, error: createLvlError } = useCreateLvl();
 
   const onCreateGameLvl = () => {
@@ -56,7 +71,6 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
           duration: duration,
           gameLvlCats: GameLvlCatsList,
         },
-
         {
           onSuccess: () => {
             console.log(`Successfully created/updated game level ${lvl}`);
@@ -73,19 +87,25 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
     }
   };
 
+  const onGetLvlById = () => {
+    refetchLvlById();
+  };
+
+  const onDeleteLvlById = () => {
+    deleteLvlById(lvlId);
+  };
+
   return (
     <div className={className}>
       <h2 className="text-center text-2xl">Create GameLvl</h2>
       <div className="border-2 border-black p-4">
         <h3>GameLvl</h3>
         <input
-          value={1}
           type="number"
           placeholder="Enter lvl"
           onChange={(e) => setLvl(Number(e.target.value))}
         />
         <input
-          value={30}
           type="number"
           placeholder="Enter duration"
           onChange={(e) => setDuration(Number(e.target.value))}
@@ -120,7 +140,7 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
             {GameLvlCatsList.length === countCatOnLvl && (
               <button
                 onClick={onCreateGameLvl}
-                className="bg-blue-500  text-white font-bold py-2 px-4 rounded"
+                className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
               >
                 create lvl
               </button>
@@ -155,8 +175,56 @@ export const GameLvlApi: React.FC<GameLvlApiProps> = ({
             </details>
           </>
         )}
+        {data && (
+          <>
+            <details>
+              <summary>lvls list</summary>
+              {data.map(
+                (lvl: {
+                  lvl: number;
+                  duration: number;
+                  created: string;
+                  id: number;
+                }) => (
+                  <div key={lvl.id} className="border-2 border-black">
+                    <p>id: {lvl.id}</p>
+                    <p>duration: {lvl.duration}</p>
+                    <p>created: {lvl.created}</p>
+                    <p>lvl: {lvl.lvl}</p>
+                  </div>
+                ),
+              )}
+            </details>
+          </>
+        )}
+        <h3>get lvl byId</h3>
+        <input
+          type="number"
+          placeholder="Enter lvl"
+          onChange={(e) => setLvlId(Number(e.target.value))}
+        />
+        <button
+          onClick={onGetLvlById}
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Get Level by id
+        </button>
+        {lvlB && (
+          <div className="border-2 border-black p-2 mt-4">
+            <h4>Level Details:</h4>
+            <p>ID: {lvlB.id}</p>
+            <p>Level: {lvlB.lvl}</p>
+            <p>Duration: {lvlB.duration}</p>
+            <p>Created: {lvlB.created}</p>
+          </div>
+        )}
+        <button
+          onClick={onDeleteLvlById}
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+        >
+          Delete Level by id
+        </button>
       </div>
-      ;
     </div>
   );
 };

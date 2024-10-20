@@ -64,7 +64,11 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
           type="file"
           onChange={handleFileChange}
         />
-        <button onClick={handleUpload} disabled={isUploadPending}>
+        <button
+          className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+          onClick={handleUpload}
+          disabled={isUploadPending}
+        >
           Upload
         </button>
         {isUploadPending && <p>Uploading...</p>}
@@ -85,7 +89,11 @@ export const AdminPanel: FC<AdminPanelProps> = ({ id }) => {
             placeholder="Enter file src"
             onChange={(e) => setFileName(e.target.value)}
           />
-          <button onClick={handleDelete} disabled={isDeletePending}>
+          <button
+            className="bg-blue-500 text-white font-bold py-2 px-4 rounded"
+            onClick={handleDelete}
+            disabled={isDeletePending}
+          >
             Delete File
           </button>
           {isDeletePending && <p>Deleting...</p>}

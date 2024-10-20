@@ -18,7 +18,7 @@ export const apiUrls = {
       get: "/admin/api/achievement", //get
     },
     game: {
-      lvl: "/admin/api/game-lvl", //post
+      lvl: "/admin/api/game-lvl", //post, get, put, delete
 
       lvls: "/api/findcat/game/lvls", //get
     },
