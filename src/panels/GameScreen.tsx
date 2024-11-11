@@ -16,6 +16,7 @@ import {
   ModalPage,
   SplitLayout,
 } from "@vkontakte/vkui";
+import { ImgGame } from "../components/GameScreen/Img";
 
 export interface OnboardingProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -142,7 +143,10 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   );
 
   return (
-    <Panel id={id} className=" h-full relative ">
+    <Panel id={id} className=" h-full relative  ">
+      <div className="w-full h-screen  bg-gray-950 flex justify-center items-center ">
+        <ImgGame />
+      </div>
       <SplitLayout modal={isOpenOnboarding && ondoarding}></SplitLayout>
       <div>
         <Onboarding

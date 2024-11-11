@@ -55,7 +55,7 @@ export const LargeButton: React.FC<LargeButtonProps> = ({
       <button
         ref={buttonRef} // Присваиваем реф кнопке
         onClick={onClick}
-        className={`inline-flex font-bold cursor-pointer justify-center items-center rounded-full w-4/5 px-3 py-2 ${bgColor()} ${className}`}
+        className={`inline-flex font-bold cursor-pointer justify-center items-center rounded-full w-4/5 md:w-2/5 px-3 py-2 ${bgColor()} ${className}`}
         disabled={isDisabled} // Делаем кнопку неактивной, если передан флаг isDisabled
       >
         {isWithWatchIcon ? <IconWatch className="mr-2" /> : null}
