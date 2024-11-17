@@ -2,9 +2,10 @@ import { useState, useRef, useEffect, useCallback } from "react";
 
 interface ImgGameProps {
   className?: string;
+  onFoundCat: (countFoundedCats: number, isFoundAllCat: boolean) => void;
 }
 
-export const ImgGame: React.FC<ImgGameProps> = ({ className }) => {
+export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
   type Cat = {
     x: number;
     width: number;
@@ -39,6 +40,9 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className }) => {
       isFind: false,
     },
   ]);
+  const countCat: number = catsCoordinates.length;
+  const [countFoundedCats, setCountFoundedCats] = useState<number>(0);
+  const [isFoundAllCat, setIsFoundAllCat] = useState<boolean>(false);
   type CatDisplay = {
     x: number;
     y: number;
@@ -124,14 +128,20 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className }) => {
       resizeObserverPositions.observe(containerRef.current);
     }
 
+    if (countFoundedCats === countCat) {
+      setIsFoundAllCat(true);
+    }
+    onFoundCat(countFoundedCats, isFoundAllCat);
+
     return () => {
       resizeObserverPositions.disconnect();
     };
-  }, [updatePositions]);
+  }, [updatePositions, countFoundedCats, countCat, onFoundCat, isFoundAllCat]);
 
   const handleCatClick = (index: number) => {
+    setCountFoundedCats((prev) => prev + 1);
     setCatsCoordinates((prevCats) =>
-      prevCats.map((cat, i) => (i === index ? { ...cat, isFind: true } : cat)),
+      prevCats.map((cat, i) => (i === index && !cat.isFind ? { ...cat, isFind: true } : cat)),
     );
   };
 

@@ -132,6 +132,10 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         break;
     }
   };
+
+  const onFoundCat = (countFoundedCats: number, isFoundAllCat: boolean) => {
+    console.log(countFoundedCats, isFoundAllCat);
+  };
   const ondoarding = (
     <ModalRoot activeModal="ondoarding">
       <ModalPage
@@ -145,7 +149,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   return (
     <Panel id={id} className=" h-full relative  ">
       <div className="w-full h-screen  bg-gray-950 flex justify-center items-center ">
-        <ImgGame />
+        <ImgGame onFoundCat={onFoundCat} />
       </div>
       <SplitLayout modal={isOpenOnboarding && ondoarding}></SplitLayout>
       <div>
