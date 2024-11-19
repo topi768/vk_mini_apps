@@ -10,6 +10,7 @@ import { Footer } from "../components/Footer";
 import { TimerReverse } from "../components/TimerReverse";
 import { ListItem } from "../components/ui/ListItem";
 import { useUser } from "../hooks/useUser.ts";
+import { Survey } from "../components/Survey.tsx";
 
 export interface HomeProps extends NavIdProps {
   fetchedUser?: UserInfo;
@@ -19,31 +20,36 @@ export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { userResponse } = useUser();
   console.log(userResponse);
-
+  const value = {
+    score: 0,
+    userPosition: 0,
+    catsFoundCount: 0,
+    achievementsCount: 0,
+  };
   const rankingData = [
     {
       iconName: "score",
       route: "",
       text: "Счет",
-      value: userResponse?.score,
+      value: value?.score,
     },
     {
       iconName: "top",
       route: "",
       text: "Место в рейтинге",
-      value: userResponse?.userPosition,
+      value: value?.userPosition,
     },
     {
       iconName: "score",
       route: "",
       text: "Найдено котиков",
-      value: userResponse?.catsFoundCount,
+      value: value?.catsFoundCount,
     },
     {
       iconName: "achievements",
       route: "",
       text: "Открыто достижений",
-      value: userResponse?.achievementsCount,
+      value: value?.achievementsCount,
     },
   ];
 
@@ -77,7 +83,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
                   iconName={item.iconName}
                   route={item.route}
                   text={item.text}
-                  value={item.value}
+                  value={String(item.value)}
                 />
               ))}
 
@@ -100,7 +106,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
             </div>
           </div>
         </div>
-
+        <Survey />
         <Footer />
       </Panel>
     </>

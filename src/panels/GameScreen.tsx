@@ -1,14 +1,14 @@
-import { FC, useState, useRef } from "react";
+import { FC, useState, useRef, useEffect } from "react";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { GameTimer } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
-import { HintBtn } from "../components/GameScreen/HintBtn";
+// import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
 import { Results } from "../components/GameScreen/Results";
 import { HintCircle } from "../components/GameScreen/HintCircle";
-import { useGetLvls } from "../hooks/useGetLvls";
+// import { useGetLvls } from "../hooks/useGetLvls";
 import {
   Panel,
   NavIdProps,
@@ -23,23 +23,71 @@ export interface OnboardingProps extends NavIdProps {
 }
 
 export const GameScreen: FC<OnboardingProps> = ({ id }) => {
-  const [countHints, setCountHints] = useState(3);
-  const [isOpenOnboarding, setIsOpenOnboarding] = useState(false);
+  type Cat = {
+    x: number;
+    width: number;
+    height: number;
+    y: number;
+    id: number;
+    isFind: boolean;
+  };
+  const [key, setKey] = useState(0);
+
+  const [countHints] = useState(3);
+  const [isOpenOnboarding, setIsOpenOnboarding] = useState(
+    localStorage.getItem("isOpenOnboarding") ? false : true,
+  );
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
-  const [startSeconds, setStartSeconds] = useState(300);
+  const [startSeconds, setStartSeconds] = useState(30);
   const [isOpenResults, setIsOpenResults] = useState(false);
+  // const [score, setScore] = useState(0);
+  const [countFindCast, setCountFindCats] = useState(0);
+  const [catsCoords] = useState<Cat[]>([
+    // {
+    //   x: 16,
+    //   width: 17,
+    //   height: 10,
+    //   y: 81,
+    //   id: 1,
+    //   isFind: false,
+    // },
+    // {
+    //   x: 34,
+    //   width: 10,
+    //   height: 10,
+    //   y: 75,
+    //   id: 2,
+    //   isFind: false,
+    // },
+    // {
+    //   x: 50,
+    //   width: 10,
+    //   height: 13,
+    //   y: 69,
+    //   id: 3,
+    //   isFind: false,
+    // },
+    {
+      x: 26,
+      width: 40,
+      height: 70,
+      y: 25,
+      id: 4,
+      isFind: false,
+    },
+  ]);
+  // const { data } = useGetLvls();
+  // console.log(data);
 
-  const { data } = useGetLvls();
-  console.log(data);
-
-  const handleClickHint = () => {
-    if (countHints >= 1) {
-      setCountHints(countHints - 1);
-    } else {
-      return;
-    }
-  };
+  // const handleClickHint = () => {
+  //   if (countHints >= 1) {
+  //     setCountHints(countHints - 1);
+  //   } else {
+  //     return;
+  //   }
+  // };
+  useEffect(() => {}, [countHints]);
 
   const [isPause, setIsPause] = useState(false);
 
@@ -62,6 +110,15 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
     setIsOpenPrestartModal(false);
   };
 
+  const handleCloseOnboarding = () => {
+    setIsOpenOnboarding(false);
+    localStorage.setItem("isOpenOnboarding", String(false));
+  };
+
+  const resetGame = () => {
+    setKey((prevKey) => prevKey + 1);
+    setIsOpenResults(false);
+  };
   const timerEL = useRef<HTMLDivElement>(null);
   const hintButtonEL = useRef<HTMLDivElement>(null);
   const pauseButtonEL = useRef<HTMLButtonElement>(null);
@@ -134,7 +191,11 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
 
   const onFoundCat = (countFoundedCats: number, isFoundAllCat: boolean) => {
-    console.log(countFoundedCats, isFoundAllCat);
+    if (isFoundAllCat) {
+      setIsOpenResults(true);
+    } else {
+      setCountFindCats(countFoundedCats + 1);
+    }
   };
   const ondoarding = (
     <ModalRoot activeModal="ondoarding">
@@ -147,16 +208,16 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   );
 
   return (
-    <Panel id={id} className=" h-full relative  ">
+    <Panel key={key} id={id} className=" h-full relative  ">
       <div className="w-full h-screen  bg-gray-950 flex justify-center items-center ">
-        <ImgGame onFoundCat={onFoundCat} />
+        <ImgGame onFoundCat={onFoundCat} catsCoordinatesProps={catsCoords} />
       </div>
       <SplitLayout modal={isOpenOnboarding && ondoarding}></SplitLayout>
       <div>
         <Onboarding
           isOpen={isOpenOnboarding}
           onHighlightChange={handleHighlightChange}
-          onEnd={() => setIsOpenOnboarding(false)}
+          onEnd={handleCloseOnboarding}
         />
         <PauseModal
           onClose={handleClosePauseModel}
@@ -171,12 +232,12 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
           ref={timerEL}
         />
         <div className=" w-full flex justify-between items-end absolute bottom-5 left-0 px-6 ">
-          <HintBtn
+          {/* <HintBtn
             ref={hintButtonEL}
             className="translate-y-[6px]"
             countHint={countHints}
             onClick={handleClickHint}
-          />
+          /> */}
           <PauseBtn ref={pauseButtonEL} onClick={handleClickPause} />
         </div>
 
@@ -186,10 +247,15 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
         />
         <Results
           isOpen={isOpenResults}
-          results={{ score: 123, amountCat: 5, timeLeft: "00:05" }}
+          results={{
+            score: countFindCast * 257,
+            amountCat: countFindCast - 1,
+            timeLeft: timerEL.current?.textContent,
+          }}
           onClose={() => setIsOpenResults(false)}
+          OnRepeatGame={resetGame}
         />
-        <HintCircle countHints={countHints} pointCordX={200} pointCordY={200} />
+        <HintCircle countHints={countHints} pointCordX={250} pointCordY={700} />
       </div>
     </Panel>
   );

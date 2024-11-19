@@ -3,7 +3,7 @@ import { Panel, NavIdProps } from "@vkontakte/vkui";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { Header } from "../components/Header";
 import { Spacing } from "../components/ui/Spacing";
-import MediumButton from "../components/ui/buttons/MediumButton";
+// import MediumButton from "../components/ui/buttons/MediumButton";
 import { useGetRatingTop5 } from "../hooks/useGetTop5";
 import { Avatar } from "../components/Avatar";
 import { RatingTop5Item } from "../api/types";
@@ -78,10 +78,10 @@ export const ScoreList: FC<ScoreListProps> = ({ id }) => {
                 <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
                   Ваши друзья не в тусовке.
                 </p>
-                <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
+                {/* <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
                   Исправим?
                 </p>
-                <MediumButton className="mt-2" text="Пригласить" />
+                <MediumButton className="mt-2" text="Пригласить" /> */}
               </div>
             </div>
           )}

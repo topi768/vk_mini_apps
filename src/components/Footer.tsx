@@ -15,9 +15,9 @@ export const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
     <>
       <footer
-        className={`px-6 w-full flex text-[10px] md:text-[16px] absolute bottom-4 left-0 ${className}`}
+        className={`px-6 w-full  text-[10px]  md:text-[16px] flex justify-center absolute bottom-4 left-0 ${className}`}
       >
-        <nav className="xl:justify-center w-full h-full flex justify-between items-center">
+        <nav className="w-full h-full max-w-[500px] flex justify-between items-center">
           <div
             className="relative cursor-pointer"
             onClick={() => routeNavigator.push("/СurrencyPurchase")}
