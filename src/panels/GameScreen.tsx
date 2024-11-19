@@ -31,7 +31,7 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   const [isOpenResults, setIsOpenResults] = useState(false);
 
   const { data } = useGetLvls();
-  console.log(data);
+  // console.log(data);
 
   const handleClickHint = () => {
     if (countHints >= 1) {
@@ -134,7 +134,9 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
 
   const onFoundCat = (countFoundedCats: number, isFoundAllCat: boolean) => {
-    console.log(countFoundedCats, isFoundAllCat);
+    if (isFoundAllCat) {
+      setIsOpenResults(true);
+    }
   };
   const ondoarding = (
     <ModalRoot activeModal="ondoarding">

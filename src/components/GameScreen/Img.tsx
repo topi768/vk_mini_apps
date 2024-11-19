@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
+import styles from "./Img.module.css"; // импорт CSS Module
 
 interface ImgGameProps {
   className?: string;
@@ -139,9 +140,16 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
   }, [updatePositions, countFoundedCats, countCat, onFoundCat, isFoundAllCat]);
 
   const handleCatClick = (index: number) => {
-    setCountFoundedCats((prev) => prev + 1);
     setCatsCoordinates((prevCats) =>
-      prevCats.map((cat, i) => (i === index && !cat.isFind ? { ...cat, isFind: true } : cat)),
+      prevCats.map((cat, i) => {
+        if (i === index && !cat.isFind) {
+          setCountFoundedCats((prev) => prev + 1);
+
+          return { ...cat, isFind: true };
+        }
+
+        return cat;
+      }),
     );
   };
 
@@ -161,7 +169,7 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
           onClick={() => handleCatClick(index)}
           key={index}
           data-cat-index={index}
-          className="absolute border-4 border-solid border-red"
+          className={`absolute border-solid ${cat.isFind ? " border-2" : ""}`}
           style={{
             top: `${cat.y}px`,
             left: `${cat.x}px`,
@@ -170,7 +178,13 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
             // transform: "translate(-50%, -50%)",
           }}
         >
-          {cat.isFind && <div className="text-white">Нашел!</div>}
+          {cat.isFind && (
+            <img
+              className={styles.imgFind}
+              src="/src/assets/findEffect.gif"
+              alt="Cat"
+            />
+          )}
         </div>
       ))}
     </div>
