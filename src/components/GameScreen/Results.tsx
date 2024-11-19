@@ -13,14 +13,20 @@ import { useEffect } from "react";
 const portal = document.getElementById("portal")!;
 interface ResultsProps {
   isOpen: boolean;
-  results: { score: number; amountCat: number; timeLeft: string };
+  results: {
+    score: number;
+    amountCat: number;
+    timeLeft: string | null | undefined;
+  };
   onClose: () => void;
+  OnRepeatGame: () => void;
 }
 
 export const Results: React.FC<ResultsProps> = ({
   isOpen,
   results,
   onClose,
+  OnRepeatGame,
 }) => {
   const rang = usePlayerStore((state) => state.rang);
 
@@ -83,7 +89,11 @@ export const Results: React.FC<ResultsProps> = ({
                 </div>
               </div>
             </div>
-            <LargeButton className="mt-8" text={`Повторить (${5})`} />
+            <LargeButton
+              onClick={OnRepeatGame}
+              className="mt-8"
+              text={`Повторить `}
+            />
           </div>
         </div>
         <LargeButton

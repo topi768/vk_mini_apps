@@ -1,47 +1,27 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import styles from "./Img.module.css"; // импорт CSS Module
-
+type Cat = {
+  x: number;
+  width: number;
+  height: number;
+  y: number;
+  id: number;
+  isFind: boolean;
+};
 interface ImgGameProps {
   className?: string;
   onFoundCat: (countFoundedCats: number, isFoundAllCat: boolean) => void;
+  catsCoordinatesProps: Cat[];
 }
 
-export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
-  type Cat = {
-    x: number;
-    width: number;
-    height: number;
-    y: number;
-    id: number;
-    isFind: boolean;
-  };
-  const [catsCoordinates, setCatsCoordinates] = useState<Cat[]>([
-    {
-      x: 16,
-      width: 17,
-      height: 10,
-      y: 81,
-      id: 1,
-      isFind: false,
-    },
-    {
-      x: 34,
-      width: 10,
-      height: 10,
-      y: 75,
-      id: 2,
-      isFind: false,
-    },
-    {
-      x: 50,
-      width: 10,
-      height: 13,
-      y: 69,
-      id: 3,
-      isFind: false,
-    },
-  ]);
-  const countCat: number = catsCoordinates.length;
+export const ImgGame: React.FC<ImgGameProps> = ({
+  className,
+  onFoundCat,
+  catsCoordinatesProps,
+}) => {
+  const [catsCoordinates, setCatsCoordinates] =
+    useState<Cat[]>(catsCoordinatesProps);
+  const [countCat, setCountCat] = useState<number>(catsCoordinates?.length);
   const [countFoundedCats, setCountFoundedCats] = useState<number>(0);
   const [isFoundAllCat, setIsFoundAllCat] = useState<boolean>(false);
   type CatDisplay = {
@@ -66,15 +46,15 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
       const xOffset = (xOffsetpx * 100) / windowWidth;
       const yOffset = (yOffsetpx * 100) / windowHeight;
 
-      if (xOffset + cat.width > 100) {
-        return false;
-      } else if (yOffset + cat.height > 100) {
-        return false;
-      } else if (xOffset + cat.width * 2 < 0) {
-        return false;
-      } else if (yOffset + cat.height * 2 < 0) {
-        return false;
-      }
+      // if (xOffset + cat.width + xOffset > 0) {
+      //   return false;
+      // } else if (yOffset + cat.height > 100) {
+      //   return false;
+      // } else if (xOffset + cat.width * 2 < 0) {
+      //   return false;
+      // } else if (yOffset + cat.height * 2 < 0) {
+      //   return false;
+      // }
 
       return true;
     },
@@ -159,7 +139,8 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
       className={`relative w-full h-full flex justify-center items-center overflow-hidden ${className}`}
     >
       <img
-        src="/src/assets/cats.webp"
+        // src="/src/assets/cats.webp"
+        src="/src/assets/cats2.png"
         alt="Cat"
         className="w-full h-full object-cover"
       />
@@ -169,7 +150,7 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
           onClick={() => handleCatClick(index)}
           key={index}
           data-cat-index={index}
-          className={`absolute border-solid ${cat.isFind ? " border-2" : ""}`}
+          className={` absolute border-solid ${cat.isFind ? styles.square : ""}`}
           style={{
             top: `${cat.y}px`,
             left: `${cat.x}px`,
@@ -180,9 +161,8 @@ export const ImgGame: React.FC<ImgGameProps> = ({ className, onFoundCat }) => {
         >
           {cat.isFind && (
             <img
-              className={styles.imgFind}
+              className={`${styles.imgFind} `}
               src="/src/assets/findEffect.gif"
-              alt="Cat"
             />
           )}
         </div>

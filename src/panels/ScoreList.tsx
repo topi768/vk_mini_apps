@@ -78,10 +78,10 @@ export const ScoreList: FC<ScoreListProps> = ({ id }) => {
                 <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
                   Ваши друзья не в тусовке.
                 </p>
-                <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
+                {/* <p className="text-center text-black font-sf text-[1.0625rem] leading-[1.375rem]">
                   Исправим?
                 </p>
-                <MediumButton className="mt-2" text="Пригласить" />
+                <MediumButton className="mt-2" text="Пригласить" /> */}
               </div>
             </div>
           )}
