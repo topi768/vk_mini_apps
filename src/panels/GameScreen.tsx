@@ -2,7 +2,7 @@ import { FC, useState, useRef, useEffect } from "react";
 import { UserInfo } from "@vkontakte/vk-bridge";
 import { GameTimer } from "../components/GameScreen/GameTimer";
 import { PrestartModal } from "../components/GameScreen/PrestartModal";
-import { HintBtn } from "../components/GameScreen/HintBtn";
+// import { HintBtn } from "../components/GameScreen/HintBtn";
 import { PauseBtn } from "../components/GameScreen/PauseBtn";
 import { Onboarding } from "../components/GameScreen/Onboarding";
 import { PauseModal } from "../components/GameScreen/Pause";
@@ -33,11 +33,10 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   };
   const [key, setKey] = useState(0);
 
-  const [countHints, setCountHints] = useState(3);
+  const [countHints] = useState(3);
   const [isOpenOnboarding, setIsOpenOnboarding] = useState(
     localStorage.getItem("isOpenOnboarding") ? false : true,
   );
-  const [activeModal, setActiveModal] = useState("");
   const [isOpenPrestartModal, setIsOpenPrestartModal] = useState(false);
   const [isOpenPausetModal, setIsOpenPauseModal] = useState(false);
   const [startSeconds, setStartSeconds] = useState(30);
@@ -81,13 +80,13 @@ export const GameScreen: FC<OnboardingProps> = ({ id }) => {
   // const { data } = useGetLvls();
   // console.log(data);
 
-  const handleClickHint = () => {
-    if (countHints >= 1) {
-      setCountHints(countHints - 1);
-    } else {
-      return;
-    }
-  };
+  // const handleClickHint = () => {
+  //   if (countHints >= 1) {
+  //     setCountHints(countHints - 1);
+  //   } else {
+  //     return;
+  //   }
+  // };
   useEffect(() => {}, [countHints]);
 
   const [isPause, setIsPause] = useState(false);

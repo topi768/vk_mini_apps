@@ -20,7 +20,7 @@ export const Home: FC<HomeProps> = ({ id }) => {
   const routeNavigator = useRouteNavigator();
   const { userResponse } = useUser();
   console.log(userResponse);
-  let value = {
+  const value = {
     score: 0,
     userPosition: 0,
     catsFoundCount: 0,

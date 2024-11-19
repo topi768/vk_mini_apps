@@ -21,7 +21,7 @@ export const ImgGame: React.FC<ImgGameProps> = ({
 }) => {
   const [catsCoordinates, setCatsCoordinates] =
     useState<Cat[]>(catsCoordinatesProps);
-  const [countCat, setCountCat] = useState<number>(catsCoordinates?.length);
+  const [countCat] = useState<number>(catsCoordinates?.length);
   const [countFoundedCats, setCountFoundedCats] = useState<number>(0);
   const [isFoundAllCat, setIsFoundAllCat] = useState<boolean>(false);
   type CatDisplay = {
@@ -39,12 +39,13 @@ export const ImgGame: React.FC<ImgGameProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isVisibleOnWindow = useCallback(
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     (cat: Cat, xOffsetpx: number, yOffsetpx: number) => {
-      const windowWidth = window.innerWidth;
-      const windowHeight = window.innerHeight;
+      // const windowWidth = window.innerWidth;
+      // const windowHeight = window.innerHeight;
 
-      const xOffset = (xOffsetpx * 100) / windowWidth;
-      const yOffset = (yOffsetpx * 100) / windowHeight;
+      // const xOffset = (xOffsetpx * 100) / windowWidth;
+      // const yOffset = (yOffsetpx * 100) / windowHeight;
 
       // if (xOffset + cat.width + xOffset > 0) {
       //   return false;
